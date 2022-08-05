@@ -1,4 +1,4 @@
-# **Meet The New Agent-Based OpenShift Installer**
+# **Looking In The Mirror with Oc-mirror**
 
 <img src="mirror.jpg" style="width: 1000px;" border=0/>
 
