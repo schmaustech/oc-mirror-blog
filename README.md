@@ -26,10 +26,32 @@ OpenShift makes it easy to manage Kubernetes clusters that have unfettered inter
 
 As I mentioned before oc-mirror was released as technical preview in OpenShift 4.10 and there is a preview blog which covers the basic features and usage of the tool [here](https://cloud.redhat.com/blog/how-oc-mirror-will-help-you-reduce-container-management-complexity).  With that stated this blog will focus on the new features to the 4.11 GA release that we highlighted above.
 
+### Setting Up Initial Mirroring
+
+~~~bash
+
+~~~
+
 ## Pruning Images
+
+~~~bash
+
+~~~
 
 ## Select Image Content Based on Version Range
 
+~~~bash
+
+~~~
+
 ## OSUS Graph Creation
 
+~~~bash
+
+~~~
+
 ## Prefer Direct Update Paths and Skip Intermediate Releases
+
+~~~bash
+
+~~~
