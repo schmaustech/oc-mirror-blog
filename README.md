@@ -1,4 +1,4 @@
-# **Looking In The Mirror with Oc-mirror**
+# **Mirroring Registries The Easy Way**
 
 <img src="mirror.jpg" style="width: 1000px;" border=0/>
 
