@@ -9,17 +9,19 @@ OpenShift makes it easy to manage Kubernetes clusters that have unfettered inter
 * Minimizing the amount of content downloaded
 * Simplifying the mirroring process
 * Ensuring the right content is mirrored
-* Better overall user experience
+* Better overall user experience with a single command to manage images
 
-## Features Included
+## New Features Included In GA
 
-* Create bootable images with <code>openshift-install</code> command to deploy your clusters.
-* In-place bootstrap, no extra node required.
-* Works in fully disconnected deployments.
-* Works with a mirrored local registry.
-* Supports single node OpenShift (SNO), compact 3-node clusters, and highly available topologies.
-* Can be automated with third party tools.
-* User-friendly interface based on the Assisted Installer.
+* Prune OpenShift and Operator images
+* Select image content based on version range selections
+* OSUS graph creation
+* Option to prefer direct update paths and skip intermediate releases
 
+## Existing Features from 4.10 Dev Preview
+
+ * Provides a centralized method to mirror OpenShift Container Platform releases, Operators, helm charts, and other images.
+ * Maintains update paths for OpenShift Container Platform and Operators.
+ * Uses a declarative image set configuration file to include only the OpenShift Container Platform releases, Operators, and images required by cluster
 
 
