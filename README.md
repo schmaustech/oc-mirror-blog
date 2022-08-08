@@ -32,7 +32,7 @@ As I mentioned before oc-mirror was released as technical preview in OpenShift 4
 
 ~~~
 
-### Pruning Images
+### Prefer Direct Update Paths and Skip Intermediate Releases
 
 ~~~bash
 
@@ -44,13 +44,13 @@ As I mentioned before oc-mirror was released as technical preview in OpenShift 4
 
 ~~~
 
-### OSUS Graph Creation
+### Pruning Images
 
 ~~~bash
 
 ~~~
 
-### Prefer Direct Update Paths and Skip Intermediate Releases
+### OSUS Graph Creation
 
 ~~~bash
 
