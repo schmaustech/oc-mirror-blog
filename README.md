@@ -28,8 +28,34 @@ As I mentioned before oc-mirror was released as technical preview in OpenShift 4
 
 ### Setting Up Initial Mirroring
 
+Before I can demonstrate some of the new features of oc-mirror I first need to create an Imageset with the details of what version of OpenShift and any operators.  To do this lets create the following example file which will set my OCP release to 4.9.0 and also ODF and ACM:
+
 ~~~bash
 
+apiVersion: mirror.openshift.io/v1alpha1
+kind: ImageSetConfiguration
+storageConfig:
+  local:
+    path: metadata
+mirror:
+  operators:
+    - catalog: registry.redhat.io/redhat/redhat-operator-index:v4.9
+      headsOnly: false
+      packages:
+        - name: advanced-cluster-management
+          channels:
+          - name: release-2.4
+          versions:
+          - '2.4.3'
+        - name: odf-operator
+          channels:
+          - name: stable-4.9
+          versions:
+          - '4.9.0'
+  platform:
+    channels:
+    - minVersion: 4.9.0
+      name: stable-4.9
 ~~~
 
 ### Prefer Direct Update Paths and Skip Intermediate Releases
