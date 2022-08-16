@@ -1,4 +1,4 @@
-# **Mirroring Registries The Easy Way**
+# **Mirroring OpenShift Registries The Easy Way**
 
 <img src="mirror.jpg" style="width: 1000px;" border=0/>
 
