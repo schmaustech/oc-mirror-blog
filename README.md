@@ -567,7 +567,7 @@ mirror:
 EOF
 ~~~
 
-With the operator imageset file created we can now mirror the operator.   Normally one would probably want to have both there OpenShift release and operator in the same imageset but I wanted to break them out here for deomstration purposes.
+With the operator imageset file created we can now mirror the operator.   Normally one would probably want to have both there OpenShift release and operator in the same imageset but I wanted to break them out here for demonstration purposes.
 
 ~~~bash
 $ oc mirror --config=elasticsearch-operator-imageset-configuration.yaml docker://provisioning.schmaustech.com:5000 --dest-skip-tls
@@ -1844,7 +1844,7 @@ Writing image mapping to oc-mirror-workspace/mapping.txt
 Writing image pruning plan to oc-mirror-workspace/pruning-plan.json
 ~~~
 
-We can see from our direct update path run that we needed to obtain images for 4.9.42 since there was no direct path from 4.9.12 to 4.10.22.  However oc mirror ensures it brings in all the images required without the cluster operator needing to do all the guess work!
+We can see from our direct update path run that we needed to obtain images for 4.9.42 since there was no direct path from 4.9.12 to 4.10.22.  However oc mirror ensures it brings in all the images required without the cluster administrator needing to do all the guess work!
 
 ### Select Image Content Based on Version Range
 
@@ -2942,11 +2942,11 @@ Writing image mapping to oc-mirror-workspace/mapping.txt
 Writing image pruning plan to oc-mirror-workspace/pruning-plan.json
 ~~~
 
-We can see from our version range run that we would have ended up mirroring images for all version between 4.10.10 to 4.10.22 which is the equivalent of ~87GB of data!
+We can see from our version range run that we would have ended up mirroring images for all version between 4.10.10 to 4.10.22 which is the equivalent of ~87GB of data!  I am really appreciating that dry run option in this example.
 
 ### Pruning Images
 
-Pruning images is yet another feature that ensures the older content in the mirrored registry gets purged especially if it will not be needed anymore.  In this example we will demonstrate it with the Universal Base Image (ubi) mirror.   First lets create our imageset configuration file for the ubi7 image:
+Another great feature added was pruning images that ensures the older content in the mirrored registry gets purged especially if it will not be needed anymore.  In this example we will demonstrate it with with a mirror of the Universal Base Image (ubi).   First lets create our imageset configuration file for the ubi7 image:
 
 ~~~bash
 $ cat << EOF > ~/ubi-imageset-config.yaml
@@ -3021,7 +3021,7 @@ mirror:
 EOF
 ~~~
 
-And now lets run our oc-mirror command again:
+And now lets run our oc-mirror command again and see what happens this time:
 
 ~~~bash
 $ oc mirror --config=ubi-imageset-config.yaml docker://provisioning.schmaustech.com:5000 --dest-skip-tls
@@ -3077,7 +3077,7 @@ Writing image mapping to oc-mirror-workspace/results-1660175306/mapping.txt
 Writing ICSP manifests to oc-mirror-workspace/results-1660175306
 ~~~
 
-As we can see on the second run we uploaded the ubi8 image and then proceeded to delete the ubi7 image from the registry thus pruning it.   If we had wanted to keep both images on our registry we would have needed to specify both in our imageset configuration file.
+As we can see on the second run we mirrored the ubi8 image which superseded the ubi7 image. The mirror operation noticed this and then proceeded to prune the ubi7 image from the registry.   If we had wanted to keep both images on our registry we would have needed to specify both in our imageset configuration file.
 
 ### OpenShift Update Service Graph Creation
 
@@ -3102,7 +3102,7 @@ mirror:
 EOF
 ~~~
 
-Now with the updated imageset we can run the oc mirror command again.  Can you catch watch changed in the output?
+Now with the updated imageset we can run the oc mirror command again.  Can we catch watch changed in the output?
 
 ~~~bash
 $ oc mirror --config=imageset-configuration.yaml docker://provisioning.schmaustech.com:5000 --dest-skip-tls
