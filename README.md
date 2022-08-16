@@ -28,46 +28,59 @@ As I mentioned before oc-mirror was released as technical preview in OpenShift 4
 
 ### Setting Up Initial Mirroring
 
-Before I can demonstrate some of the new features of oc-mirror I first need to create an Imageset with the details of what version of OpenShift and any operators.  To do this lets create the following example file which will set my OCP release to 4.9.0 and also ODF and ACM:
+Before I demonstrate some of the new features of oc-mirror let us first show a few basic mirror examples of mirroring an OpenShift release and also an OpenShift operator.  First lets go ahead and create the OpenShift release imageset configuration.   In this example I am going to use 4.9.12 as the only release version I want to mirror:
+
+~~~bash
+$ cat << EOF > ~/imageset-configuration.yaml
+apiVersion: mirror.openshift.io/v1alpha2
+kind: ImageSetConfiguration
+mirror:
+  platform:
+    channels:
+      - name: stable-4.9
+        minVersion: 4.9.12
+        maxVersion: 4.9.12
+EOF
+~~~
+
+Now that we have the file create let us go ahead and run the oc mirror command to mirror the contents to our local registry of provisioning.schmaustech.com:5000:
 
 ~~~bash
 
-apiVersion: mirror.openshift.io/v1alpha1
-kind: ImageSetConfiguration
-storageConfig:
-  local:
-    path: metadata
-mirror:
-  operators:
-    - catalog: registry.redhat.io/redhat/redhat-operator-index:v4.9
-      headsOnly: false
-      packages:
-        - name: advanced-cluster-management
-          channels:
-          - name: release-2.4
-          versions:
-          - '2.4.3'
-        - name: odf-operator
-          channels:
-          - name: stable-4.9
-          versions:
-          - '4.9.0'
-  platform:
-    channels:
-    - minVersion: 4.9.0
-      name: stable-4.9
 ~~~
 
 ### Prefer Direct Update Paths and Skip Intermediate Releases
 
 ~~~bash
-
+$ cat << EOF > ~/shortest-upgrade-imageset-configuration.yaml
+apiVersion: mirror.openshift.io/v1alpha2
+kind: ImageSetConfiguration
+mirror:
+  platform:
+    channels:
+    - name: stable-4.10
+      minVersion: 4.9.37
+      maxVersion: 4.10.22
+      shortestPath: true
+EOF
 ~~~
 
 ### Select Image Content Based on Version Range
 
 ~~~bash
-
+$ cat << EOF > ~/version-range-imageset-configuration.yaml
+apiVersion: mirror.openshift.io/v1alpha2
+kind: ImageSetConfiguration
+storageConfig:
+  local:
+    path: metadata
+mirror:
+  platform:
+    channels:
+      - name: stable-4.9
+        minVersion: 4.9.13
+        maxVersion: 4.9.26
+EOF
 ~~~
 
 ### Pruning Images
@@ -76,21 +89,21 @@ Pruning images a feature that ensures the older content in the mirrored registry
 
 ~~~bash
 $ cat << EOF > ~/ubi-imageset-config.yaml
-   apiVersion: mirror.openshift.io/v1alpha2
-   kind: ImageSetConfiguration
-   storageConfig:
-     local:
-       path: metadata
-   mirror:
-     additionalimages:
-       - name: registry.redhat.io/ubi7/ubi:latest
- EOF
+apiVersion: mirror.openshift.io/v1alpha2
+kind: ImageSetConfiguration
+storageConfig:
+  local:
+    path: metadata
+mirror:
+  additionalimages:
+    - name: registry.redhat.io/ubi7/ubi:latest
+EOF
 ~~~
 
 Next lets go ahead and run the mirror operation with the configuration file we just created:
 
 ~~~bash
-$ oc-mirror --config=ubi-imageset-config.yaml docker://provisioning.schmaustech.com:5000 --dest-skip-tls
+$ oc mirror --config=ubi-imageset-config.yaml docker://provisioning.schmaustech.com:5000 --dest-skip-tls
 Checking push permissions for provisioning.schmaustech.com:5000
 Found: oc-mirror-workspace/src/publish
 Found: oc-mirror-workspace/src/v2
@@ -137,30 +150,21 @@ With the ubi7 image mirrored now we can now update our imageset configuration fi
 
 ~~~bash
 $ cat << EOF > ~/ubi-imageset-config.yaml
-   apiVersion: mirror.openshift.io/v1alpha2
-   kind: ImageSetConfiguration
-   storageConfig:
-     local:
-       path: metadata
-   mirror:
-     additionalimages:
-       - name: registry.redhat.io/ubi8/ubi:latest
+apiVersion: mirror.openshift.io/v1alpha2
+kind: ImageSetConfiguration
+storageConfig:
+  local:
+    path: metadata
+mirror:
+  additionalimages:
+    - name: registry.redhat.io/ubi8/ubi:latest
 EOF
 ~~~
 
 And now lets run our oc-mirror command again:
 
 ~~~bash
-$ more ubi-imageset-config.yaml 
-   apiVersion: mirror.openshift.io/v1alpha2
-   kind: ImageSetConfiguration
-   storageConfig:
-     local:
-       path: metadata
-   mirror:
-     additionalimages:
-       - name: registry.redhat.io/ubi8/ubi:latest
-[bschmaus@provisioning ~]$ oc-mirror --config=ubi-imageset-config.yaml docker://provisioning.schmaustech.com:5000 --dest-skip-tls
+$ oc mirror --config=ubi-imageset-config.yaml docker://provisioning.schmaustech.com:5000 --dest-skip-tls
 Checking push permissions for provisioning.schmaustech.com:5000
 Creating directory: oc-mirror-workspace/src/publish
 Creating directory: oc-mirror-workspace/src/v2
