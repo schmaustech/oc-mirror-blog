@@ -821,7 +821,777 @@ EOF
 With the operator imageset file created we can now mirror the operator:
 
 ~~~bash
+$ oc mirror --config=elasticsearch-operator-imageset-configuration.yaml docker://provisioning.schmaustech.com:5000 --dest-skip-tls
+Checking push permissions for provisioning.schmaustech.com:5000
+Creating directory: oc-mirror-workspace/src/publish
+Creating directory: oc-mirror-workspace/src/v2
+Creating directory: oc-mirror-workspace/src/charts
+Creating directory: oc-mirror-workspace/src/release-signatures
+WARN[0088] DEPRECATION NOTICE:
+Sqlite-based catalogs and their related subcommands are deprecated. Support for
+them will be removed in a future release. Please migrate your catalog workflows
+to the new file-based catalog format. 
+wrote mirroring manifests to oc-mirror-workspace/operators.1660659521/manifests-redhat-operator-index
 
+To upload local images to a registry, run:
+
+	oc adm catalog mirror file://redhat/redhat-operator-index:v4.10 REGISTRY/REPOSITORY
+provisioning.schmaustech.com:5000/
+  openshift-logging/elasticsearch-operator-bundle
+    blobs:
+      registry.redhat.io/openshift-logging/elasticsearch-operator-bundle sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 32B
+      registry.redhat.io/openshift-logging/elasticsearch-operator-bundle sha256:813d94d47b0041c4da11bdff39c7a386c28837025392bbd4afc451d1154f56cf 3.659KiB
+      registry.redhat.io/openshift-logging/elasticsearch-operator-bundle sha256:c80990bee129333d1e40baf7aead2ab51c3aa53b0605f3ca7766e754052aca73 3.666KiB
+      registry.redhat.io/openshift-logging/elasticsearch-operator-bundle sha256:792f1ae03ee18123e789de8fb0e2a2b278d14bf53b5bbaeef052180ed923a08d 3.668KiB
+      registry.redhat.io/openshift-logging/elasticsearch-operator-bundle sha256:e6e3fb5e057657094df27d82b26c880247b6ae62ced3debd2f560ab74d1ffb45 12.46KiB
+      registry.redhat.io/openshift-logging/elasticsearch-operator-bundle sha256:2931b3f39467f8d9699238cc37cd2ef7b43651a0458b3f715465ec71e19ca536 13.13KiB
+      registry.redhat.io/openshift-logging/elasticsearch-operator-bundle sha256:12f03c3d7d189b8b2dc8efdbfdda279edf6b766963d0653efd7143f33e3a8630 13.88KiB
+    manifests:
+      sha256:7af1bcccd4219e6f0678bd0570e65e00e6924d0c7013a081a8036168badba724 -> 52791cb
+      sha256:a909c412c3f41c780d193e55611561b89f42e140f02dd2057f9877104beea263 -> 999cca6f
+      sha256:c45340a9bdd7b544b9410d1c52fa6e9b444571d506aa05d6849281df2014ef1c -> 98515fd6
+  openshift-logging/elasticsearch-proxy-rhel8
+    blobs:
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:028bdc977650c08fcf7a2bb4a7abefaead71ff8a84a55ed5940b6dbc7e466045 1.738KiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:9f6eca53e5bceb7b88b4c078cc5d939e61d13301d8bdccb6b68eeea4d3879f3e 1.75KiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:18ea5ce2a404500d5dfadf661ec0566faf7380e56b05ed37735b93844ed5faaa 1.753KiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:d851aca55b090483dcda2af05dbf048848399647d96dd3d4089f92d35f827db7 1.753KiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:659cc5a28850a9cec8081d759126964381089684a3533338234de0be8a3ab46c 4.409KiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:136c0e9eb53faf9ae0ed499dd6b6069a965f91131db2818b7ce9a93fb74e197f 4.411KiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:38fe0f9483180dadc659633269a95f2117b9332826339d6cece457e00d8cb2f0 4.411KiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:ceff175efb86e5464d7160cba19cca6dc59a801dd847b1b069c99f2aad7947dd 4.411KiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:22832722bba973f119ea040fb521ce37fd3ea16fc444fb56bbe255550986d95f 4.413KiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:28a2293e605e635cb6ef0d09e2347b75050509ebd7c75b87f6847e5c43a8e476 4.413KiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:e77e79c4841ecca394a38a26286439448054493c8cf595eadd563814c4ae087a 4.413KiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:08dc47fac7e6d5f40450a5ecf75f78a8833e604c83567ba9860a8bc153b86962 4.424KiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:b5da01f29c6a181cdafc7a28e33ed57f0e3b13d1913450d25d72976f2d1c2907 4.424KiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:e0b5dccf461df99fcb9bc11cae4dcd95b1c60c91cb1e4b17bac8562e4ec819ce 4.424KiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:01b3f5c9eb1b336aa106b3d114a9f8b2a5a3be18a79b4379e6398863d926d45e 15.59MiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:57cb0cfdadd782c86e4d5cf07335fb64154b959c0d8900496be3735ad2e85138 18.15MiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:6c425223dd97cc703b8fb2fa0f8904fca09eec06f048ab7dc34ed1e818cf8184 18.15MiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:885b6d3571ee46af651aea440f9d599e088df7400c0151f4ecf73076d40d4b19 18.18MiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:71c87f12ca0e35fd76a6f713512e8c85f660683abab8c1fbf3806ee34920c46c 18.42MiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:09cf259d81dce3fa62b7ea83a617358370be170970d0632c2f408f63119d6d8f 18.43MiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:85709ddc9cfc3cec7043cd31ebfa53f97f705c50e841e051c6b65df7a8fa680e 19.52MiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:9a004564f0149b5a45c0f5e118f5a27174a93f245695956b87bfdd33a22a0b7d 19.52MiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:bf91b897e3a40da210ed4c96dc8cc3c4f073c68b99f3921a32e7b2966430e80b 19.72MiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:71c93b2a36fbe0bdfc96b6cec8a9da250fea7d28a66fd41fc6db5851e2b59c49 19.72MiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:744db8e918c5c882f601488dcdbe3c4e9fa01913fe57119975eb5b16a18f6250 71.97MiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:e0444ce29df7b754434fd4557ec395c5a1759e4af71c3615a81471e0c7edeadc 72.84MiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:0c673eb68f88b60abc0cba5ef8ddb9c256eaf627bfd49eb7e09a2369bb2e5db0 74.73MiB
+      registry.redhat.io/openshift-logging/elasticsearch-proxy-rhel8 sha256:7472fa517fd188919c3ff6ec27806dd20311bb57e1e34a7f3998734688fa7b42 81.13MiB
+    manifests:
+      sha256:4229507d8b89b1a24f16477661b41a4a7a6925d90fed348dd609978297fe88c4
+      sha256:5830aaf028a6a94ade5bb40840180911dd80ef0dc4eb93080cf8bde3476cd585
+      sha256:59c4a4b20ad42a32f09c60fada67a9f20c237e8dce8ece678dced5c37a87b65b
+      sha256:5ed92d7ac40e29491d237353b27237b38824eff3fe983628f199ff4ab6431ca1
+      sha256:81436241c1042cff2523bfcc73d050700efa107b3fb41c0475ae18b4a3b7b43c
+      sha256:8f2b1b2b15cab8a10b70a16e0af15dd73f0cf6932b16aac07c872beab229392d
+      sha256:90cffb969ef49252a28fc5542eca6ad4dae64d4145a59643342b3409d34250c2
+      sha256:9375a864efbb3011eb4b9e1754b338d8875a0cc70fc46996dec07946d4c9a2ae
+      sha256:99bddf1517cd5c323b34fd4690c59ed3592f812f959a43981df1cc78bed27cc9
+      sha256:b95246b7c3d0f619c92595918f9959d4d4540f492184f40353ecac5788370d3b
+      sha256:bbe43427c7cbd4007ff673afbae66070c4ed0302d82068ab987a996076d68d79
+      sha256:dda0674e21d5372ca54a504727e065ff2700e2b9d4a2d7c32aa0021ffd317d8c
+      sha256:f0bee519bb4f20aa1b7f4a1ca01db0d6a068bbcc0fa07416c242c0acffc83422
+      sha256:4229507d8b89b1a24f16477661b41a4a7a6925d90fed348dd609978297fe88c4 -> 95da220c
+      sha256:8f2b1b2b15cab8a10b70a16e0af15dd73f0cf6932b16aac07c872beab229392d -> aea12e2c
+      sha256:bbe43427c7cbd4007ff673afbae66070c4ed0302d82068ab987a996076d68d79 -> 546637da
+  openshift-logging/elasticsearch-rhel8-operator
+    blobs:
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:028bdc977650c08fcf7a2bb4a7abefaead71ff8a84a55ed5940b6dbc7e466045 1.738KiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:9f6eca53e5bceb7b88b4c078cc5d939e61d13301d8bdccb6b68eeea4d3879f3e 1.75KiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:18ea5ce2a404500d5dfadf661ec0566faf7380e56b05ed37735b93844ed5faaa 1.753KiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:d851aca55b090483dcda2af05dbf048848399647d96dd3d4089f92d35f827db7 1.753KiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:9274ef1af8feb639c6fa2d89bc8ce81a458a99e766fd57c6fcf0ae5bde3d5ad5 4.867KiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:1b22c87ebb3558c962415912f6a745433084150636cf700ec173be6e8a3003d3 4.869KiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:204b27cdab080a66b6d43a093b6995b63773f913b094612d1f5f158a0181b79c 4.871KiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:3394126ca288b1385a582e679aa7158346a211160c085336c97a367ec72412ec 4.871KiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:ca630c079b88d57837ef1b41da36f946ab66a1ddf068df885a5b13aa3e5cec79 4.871KiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:d7b63476773adac3b2c7036bbfa90e53c1b44b5750b5600cbff20ede2cde607a 4.871KiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:5aeabeb8bf8e5d841345eef75d49d7d5e34d622da7d994dc2dea25fb8dda138a 4.873KiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:0a45fdb65c417c2573e937e66c17e93ccad7fe118da646a5b97ed8c89c5e0527 4.882KiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:7aae894edcb1ca7497e742194fee008dbb82237546c917c59797ab5fa67e003d 4.884KiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:802d1e432f0adb8df75394aad6960fea717c1c48dd6a405f8dae02aa5ec15a5f 4.884KiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:7c9d5c29c097ad4d27db3724ef111af9c58078fecb740c18ea9970fabd01d34b 15.84MiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:d79db737310b836ed8074695d801a5ff6a82c6cba60b302fdfea50a883921bf1 17MiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:b4173d05a32d6fb3368cf44b57886adcde807ba7b471e6ed2cbe7f5687c13435 17.46MiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:b02c54fa38a684229c0ade3eb5eea8fa4a30d67912a52cd043dcf55384e1b5c8 18.26MiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:6997a911916b353da05a0b7a1351170bb927c13f6f0dc3d080d7e149f2e3a3a0 18.47MiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:1df48d2eae98da38c1789e39d4766c1cae09c9c38107d9c89949c12f3efa290e 19.09MiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:0f713f2e5c06198b19c74201ea100622e5e12e69895b3c0dba3e283bfbb8e87e 19.77MiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:1f1fa47b3cc066feefb22630ab9b3ef776ca8b1d1736f71c0767259f54713928 19.91MiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:594dca45124d8d7bbc1b46fb96940ff5f60d20882c3ea2593fa5e68e0d417e9c 20.34MiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:c1d4d222568b0b98997645cda3c807a4ebb28b42ef841afc4f7c3c43553c25c5 20.49MiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:744db8e918c5c882f601488dcdbe3c4e9fa01913fe57119975eb5b16a18f6250 71.97MiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:e0444ce29df7b754434fd4557ec395c5a1759e4af71c3615a81471e0c7edeadc 72.84MiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:0c673eb68f88b60abc0cba5ef8ddb9c256eaf627bfd49eb7e09a2369bb2e5db0 74.73MiB
+      registry.redhat.io/openshift-logging/elasticsearch-rhel8-operator sha256:7472fa517fd188919c3ff6ec27806dd20311bb57e1e34a7f3998734688fa7b42 81.13MiB
+    manifests:
+      sha256:04c57db2d67b32fa53f021ea003704226517e493b6cc655aba02aab0d23323a1
+      sha256:0ca3b10eeed3148fdde0cc79e379e6cf5b66fb8df18ea810cf58838caaf92f70
+      sha256:0d0bd7b54472b47a65480f5b5832b773c5c79161eedbc15cbf80a8615f7d7e47
+      sha256:0fd6cac32b8d10b0eaeecdd38c50df577067bd9ef27f20a8d03dba053e3aab04
+      sha256:150f56a69ff535982d1af00896a1b0f951cbb75666f9d139811a79b29e86b04b
+      sha256:19580a0c859f4970c09131b11f1717a417bf0fce987b0d0d0ec14aa0ae41123a
+      sha256:2305040b28a6443a794956b3d854abe7e05756228055967f24689f191ef7596f
+      sha256:32072064d66d79c1464a4f36bdba832e7ece25ed0c011b6e4a17d132408767aa
+      sha256:42f31b5843a05f5813fbd277f6304fe9e3f170fe516b35a0b1f93a0be8d936e1
+      sha256:594b6b4c6224276ee07c5b1953ba71bc8ba1eb0536d244d6cd64c0c0e971fa31
+      sha256:5bf6c8da6f400c6ca0ed3a0294f614f45bdc2477759708723d77d15cfab52e34
+      sha256:a834960d45d27966bb4f866b87014c02b80c463cf0298fecb2d943b51200d2dd
+      sha256:c0fb2fe7c385dcac5e5e5cd587ab5ef0b27c6cb821a62a0927a80bc2e9b7c96b
+      sha256:04c57db2d67b32fa53f021ea003704226517e493b6cc655aba02aab0d23323a1 -> 269efb57
+      sha256:0fd6cac32b8d10b0eaeecdd38c50df577067bd9ef27f20a8d03dba053e3aab04 -> 2a020a6
+      sha256:32072064d66d79c1464a4f36bdba832e7ece25ed0c011b6e4a17d132408767aa -> 3b9c8a03
+  openshift-logging/elasticsearch6-rhel8
+    blobs:
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:028bdc977650c08fcf7a2bb4a7abefaead71ff8a84a55ed5940b6dbc7e466045 1.738KiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:9f6eca53e5bceb7b88b4c078cc5d939e61d13301d8bdccb6b68eeea4d3879f3e 1.75KiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:18ea5ce2a404500d5dfadf661ec0566faf7380e56b05ed37735b93844ed5faaa 1.753KiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:d851aca55b090483dcda2af05dbf048848399647d96dd3d4089f92d35f827db7 1.753KiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:91b345fa63275be3f0923e4e44b1484d80be07b29e8615a6f1c8d98750ff805a 5.184KiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:680d586ff9861f86dbf95612f95ca7917cfb1a35184c00e155b22b3a011b31c9 5.186KiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:ed0905b935a31bbbe0028e7067491e244d20584a748699cfa613511c16d676d0 5.196KiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:76b5d0886390deba920aef23f5019cf0f27806e8bdc03da5cd35dfdf8cc584ca 5.213KiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:5ff1da96e70e895fea3989b2eea08d5cf655e7dd9ae17a50353771e43d26d75a 5.215KiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:29b451605f52172a7fbfd56d3e8697abbc7523c040dcc18badcdaf5dabdf7d06 5.217KiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:3e2b4a9faae355a5d6427aa2f33d0bae4154ff66201d126044e44489825db5e5 5.217KiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:c1aabd6fea279b010a8cb1584b67837ddac44f9763b55f3e52a108586236961d 5.219KiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:08cec5c62a42972af51188c10f9e55b81b7afb4a28c337a2deabc0793d8fb396 5.229KiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:1cc17be930536c6f822c4791961d7313ad8a93b9b03c9bbf6e2b858b969d03ba 5.229KiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:744db8e918c5c882f601488dcdbe3c4e9fa01913fe57119975eb5b16a18f6250 71.97MiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:e0444ce29df7b754434fd4557ec395c5a1759e4af71c3615a81471e0c7edeadc 72.84MiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:0c673eb68f88b60abc0cba5ef8ddb9c256eaf627bfd49eb7e09a2369bb2e5db0 74.73MiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:7472fa517fd188919c3ff6ec27806dd20311bb57e1e34a7f3998734688fa7b42 81.13MiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:0426bc76cfcec7ac4a57b924ff9f4f16c778cac6f901740935c8d92292be394b 127.2MiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:4d756d1efa8d4216c9087a9e8d7e2dfd5866a825c7d88f6cbedc9ef75cdee4a0 127.2MiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:00beaece7ea33c31ff371482a939906501d2eba4bd5e59d49efb12e6421499f0 129.4MiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:a0babb4e67c401ee5c81c2f6d19d835e2e445bb12f47c1c035a99f14dd301392 130.5MiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:42f1bdba73509157bc04b7a2a873c7f34ed0684871c2cba80bfda9ddb2c1bb88 130.5MiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:ef2eedd126d250887935c4eef88d8e0d12f7bcdc2f4a21784111eab0065e6a31 132.7MiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:143b441c3f6dc0876008ff7487f29da9833302594a12b128fc995ba914b2a5eb 133.9MiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:3f293dc69570341094547d1e5841c52e3e5f672807d667a3d6d955b3bc04465b 134.8MiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:1986cf014b8e11aa06d3d8f65bebefd005377d08a13061c25ec32c2f2d97901c 134.8MiB
+      registry.redhat.io/openshift-logging/elasticsearch6-rhel8 sha256:479a285eea48eaef0ff2f0ff86e43deedeccf984de9edcfcd24469e41a706642 137MiB
+    manifests:
+      sha256:3a5c08cba4458bfa6eadb89b1021b4c1d079d4dffcf8696e6805aac998134927
+      sha256:4fad94662f25baf49926835945125fd98146ab22c1bb6137e4ed3941f1ca9216
+      sha256:6654f0fb5a4cc17a7b202c8348ee1a73ec95b2176d07562e4219554ebe9f174f
+      sha256:79ed4a8e586776a7d6f0c2d1a18e5d3323504d0dc7a5878cdf032957babe5a5a
+      sha256:849379f0269df32524a3faeb5c3d57bf75494159d34395b50eb9452611310054
+      sha256:8abca8585eff035f45616a265500f2ce06ef4e442f13875b3c21211652bf7f7f
+      sha256:9ccdc664571e8253482b1742b3752f8ad97f3a3fe6be3cd8a9daa85d11c10598
+      sha256:b73fb8e9127df35d8a7ae199320b11d27e0cce6e962f91cfc17293d50e1aca55
+      sha256:c0584e6b83f02d37cd70d1a67dd7dd954c5fb4f387fa9908b01c065801ab5cda
+      sha256:c2073dba02ece384f46c096cc7d381eada238a44761ff6db9c539a5ecebfbecc
+      sha256:c6c240f1572a3bad0e5ed98da599ec8cf807bba46a5ad321648e4edd133a16fe
+      sha256:cfa7ab769658065d18573d619a814e084dc78e5e037d82c4bbcabf91b4da620b
+      sha256:dcd19739325a15140f8bbfe20f384b404552a382f02d353233470f59af9d5ee9
+      sha256:6654f0fb5a4cc17a7b202c8348ee1a73ec95b2176d07562e4219554ebe9f174f -> 3094b4ef
+      sha256:c2073dba02ece384f46c096cc7d381eada238a44761ff6db9c539a5ecebfbecc -> df628929
+      sha256:dcd19739325a15140f8bbfe20f384b404552a382f02d353233470f59af9d5ee9 -> ec4de832
+  openshift-logging/kibana6-rhel8
+    blobs:
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:028bdc977650c08fcf7a2bb4a7abefaead71ff8a84a55ed5940b6dbc7e466045 1.738KiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:9f6eca53e5bceb7b88b4c078cc5d939e61d13301d8bdccb6b68eeea4d3879f3e 1.75KiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:18ea5ce2a404500d5dfadf661ec0566faf7380e56b05ed37735b93844ed5faaa 1.753KiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:d851aca55b090483dcda2af05dbf048848399647d96dd3d4089f92d35f827db7 1.753KiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:d83abe0bf84e68fd00b0d52bd69f27052215c6905b03e8173aa6796ec50bca63 4.942KiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:08e1b8a4b86e01d9bb6f2fa72d90fe9a90945cb720ca7623f3384bc7cf5012b4 4.944KiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:69308c99c73851e3ed1295e1ecb4253e36bf9e712baa993b7086510106982bb3 4.944KiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:7ab56a1384b5d08b61a2d969bd2e76678f7b771b5fda9deb12e77c6fe7d83fb9 4.944KiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:8bee28c3f1462dc983d8ab5bf72725b5ae1ab4b34c1664e7f72d4200811a8f04 4.946KiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:d36c94e09fabc65d2c94b142287bef1ad609b4e1d92d82ad9921eaa115fe8221 4.946KiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:d4fc7f3d8c4d085918aa831b2f914292e78a79a9bb17cd9c338a245bba9b416f 4.946KiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:33a07b6706c17b660019e08495a2e93449d502a196792752c5770abeaca207ec 4.957KiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:3435b81ae00e06fef828c17774abb71adb5f6b90eb6171294b5ccc0f8d33343e 4.957KiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:f6eadda5edb427dcb8318029c2604cb94fc4c48b1a7b80af04adcb0e4e43aa13 4.957KiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:744db8e918c5c882f601488dcdbe3c4e9fa01913fe57119975eb5b16a18f6250 71.97MiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:e0444ce29df7b754434fd4557ec395c5a1759e4af71c3615a81471e0c7edeadc 72.84MiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:0c673eb68f88b60abc0cba5ef8ddb9c256eaf627bfd49eb7e09a2369bb2e5db0 74.73MiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:7472fa517fd188919c3ff6ec27806dd20311bb57e1e34a7f3998734688fa7b42 81.13MiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:285aca8b4565e008e8274c6ff136f49ff5abcd91c71c47b10861f978a65987f3 106.8MiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:02198392e06307f51ca3bc77e199c9e040af1fca1efa5bcda2a353f529ad82f5 107.1MiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:ae7d948d4fe3dd8bbb1c9cd9d0302c8b9ff250bbb23e5f6a41e517d02419517e 107.1MiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:a1228ff2a3593e6da7b42f70f4802a35c5d6ce19177e5932d06727630590ab70 107.1MiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:0d34ba994a88f4ea03d58b93aff34d8d914d7d5d1f58288341f8f4ba863daa8a 108.2MiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:7a3a16f1a7833a8b0669de670a8bcf7618e92a6ea7703bdf1050f09666e8e831 108.2MiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:7c81be05d73326343912066d334f6b63f5e5c6a5f255096e6bf238e80ef5c4de 108.2MiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:464be667dc24005da32089e22dbb15427626aa52294d8879e10b2e25fed0fe24 110.4MiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:7bce98aa4e08dd538229d5a73c4b3a46bdff3cb8d12f928b68fc254798811331 110.4MiB
+      registry.redhat.io/openshift-logging/kibana6-rhel8 sha256:13966aee5eabd568c53761e7b565a699b6306dceb1f8dc37fbe233ed32bb01df 110.4MiB
+    manifests:
+      sha256:20b07dc6e878d6b446f53382d46d619b642f5770b5557185430ce3f1027e9e58
+      sha256:46752e10e726c84be876c1dfd565fba4815054afd71db84af16a854346930a8f
+      sha256:4c4777c63d906f332d658183f76cc0f7c1eefbfa58adfa6b7b584ab710323ac7
+      sha256:64adeb26441159a1d2c3624fdb2a8b76f642f48d1171ce46bbfee7767839c77f
+      sha256:64cb1964e1ece3ca7ff609dfe59c974208095200ae79a95517646aef7330f279
+      sha256:7edf2fbe72e88de3b48ee40b9c960b5b567c27d1902745f7f6d8a5836d89432b
+      sha256:7ef542a41916c19fae8c3500afc4b575809d0091001709b8df8ef107df046aa7
+      sha256:a2f2573009880db9e2e21e68c90bbf0d32192774e0bee60d85a9c1117cc096a5
+      sha256:a7863257f2bd010979de552d78252195f077b17ff28af140f066102fa0893afb
+      sha256:b7562f5d22d8860bca1fd0d4dd7610e84153f111aeced03b7c6646495f3ee5a5
+      sha256:ece1828d3b83d7d080c14061017a0954454d6eaa1b64cbbe9eeed51d3fbaaa59
+      sha256:f64d3b646c1c0ad13cac02c0e6eab377eccf040c33e896fa5d0c4be90d1f85d4
+      sha256:fcc486c24f642b390d7c77765a33c6fc656719e0ab1345f18f186d6c15f7c12c
+      sha256:46752e10e726c84be876c1dfd565fba4815054afd71db84af16a854346930a8f -> 303c8651
+      sha256:a7863257f2bd010979de552d78252195f077b17ff28af140f066102fa0893afb -> 54a9b3fb
+      sha256:fcc486c24f642b390d7c77765a33c6fc656719e0ab1345f18f186d6c15f7c12c -> 8d9ad1df
+  openshift-logging/logging-curator5-rhel8
+    blobs:
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:028bdc977650c08fcf7a2bb4a7abefaead71ff8a84a55ed5940b6dbc7e466045 1.738KiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:9f6eca53e5bceb7b88b4c078cc5d939e61d13301d8bdccb6b68eeea4d3879f3e 1.75KiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:18ea5ce2a404500d5dfadf661ec0566faf7380e56b05ed37735b93844ed5faaa 1.753KiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:d851aca55b090483dcda2af05dbf048848399647d96dd3d4089f92d35f827db7 1.753KiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:87f2574ef01157208dde2107fa02ad2f2f4ef4bc99787246ba90b4fdc34b9864 8.711KiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:7f70e2ae7ae0cad4dcaf44157b436b7d46280d41065e645b009e4b2d022e4949 8.712KiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:dec3a205365c434159397e9fd205e2d06fe6c92f3500ad25970270c2124aa2c0 8.712KiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:fe6cf584261df0257564f78560135e84c2aaf4e43c7c9b3c1cf159813370ff71 8.712KiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:bb20745801252c4c42b5913da8211b7e9660a5d1d906f21d6867d55f2adfc843 8.715KiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:d18c92306b4e88259ef35b716ce28f643ffe21b0b00e7f7cce12fd5902604276 8.715KiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:e647ce8115f7923b3199fb58599c5dab2529e7908a22e301768178bfeb8e697d 8.715KiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:9b2866411fdd12501121fd6504d9827fe0ba78086e8c606eedc03fff55f1012a 8.719KiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:659c0888e2d0852b0f2cc8816adab2186d903ad33e356cf75b3a3268dbc5b174 8.721KiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:e4e702a12c4fa2228d5d7e29ee4a8e863d0072466ebb333a14f6b21f118bfbb9 8.721KiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:7fc90ec5910cc61ec9ef343b45afa4686f5fce8d315e035e715173a644e594f9 9.841MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:a08701cfb02c70f5a591f61b704143efc204eea4741b001dfaadf1dc1e418abd 9.863MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:976a6ec80cde45dfeae673daa8dbc621636ede774c75b83baa54f7156fff32f3 9.863MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:646863affa911f2c19ab3171d96c762f6771b56abc1bbb59fe37618d25b9074e 9.864MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:a8c993030847eb9dd7df137c4c1870668567f3ee08c23a0ce6aaae850a73dae0 9.868MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:a91c5a52790333e1e3745df0653ca99a97fcd2e8e62afe4554e5e073539a8632 9.869MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:7c111161f1c7d02527fdd542b9453a099b83c39431d260981e58cdaf9b9b2122 9.869MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:3a42a12285a14c214f7dc65ce11f7d824720bd957c37799819e4d5fab9bfbeb9 9.87MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:d279a707031eec5e0f9b724a7cd01341b9462eeaa0440f3fc72315523ba7f263 9.87MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:f120a28ad0333fad7128621e7e926d5f031fb8ce7524c48eaacbe50d2d2659d0 9.87MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:a1acc2fd53cd4b8369b226d144c216d25d9c1a380745768f496afbc3f48a1298 16.34MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:1ec3039ee2083ddda0023477b8b6ce4953997b4ca67abdeae1be577be165745a 16.37MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:c37fd7de0840b4031b29e532b9c694c59a63983ae93162a2e6476882cd075b21 16.53MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:c54fd38fa8e85b2fb449666efa98198e9664b52a6f3602c0a4a8667186f12b99 16.94MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:9e25df444adda9ace9a6b12845bc467f66ce28210e0e861345b09dfb1a4934f4 54.74MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:e7b19f7fb76205a1eeff179c33d6dd5b42f54cbd78a31da78b4de061b7efee56 57.73MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:dd2de847c8709912f53afe9b923c4162d8d952acf40c71aa5cb558ee8b51069a 59.27MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:37824726d5db14cd27b31672cc85b982a3cbb241d267997ac14d88305d7314cd 63.02MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:744db8e918c5c882f601488dcdbe3c4e9fa01913fe57119975eb5b16a18f6250 71.97MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:e0444ce29df7b754434fd4557ec395c5a1759e4af71c3615a81471e0c7edeadc 72.84MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:0c673eb68f88b60abc0cba5ef8ddb9c256eaf627bfd49eb7e09a2369bb2e5db0 74.73MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:7472fa517fd188919c3ff6ec27806dd20311bb57e1e34a7f3998734688fa7b42 81.13MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:cae34425c559694a7a6f072c2486b4b9353f567f1591ab9460e507232f7eccce 129MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:7147b3e78d611407487bf504aca3c53a567ce827a9bc60213a018f8743315da6 129.7MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:bf105214519e48fd5c21e598563e367f6f3b7c30996d1745a99428752c0ad1ae 135MiB
+      registry.redhat.io/openshift-logging/logging-curator5-rhel8 sha256:937bf243b00d655660ed34f27c7d3b34d35b6773132db86e176584f6706cdfcf 142MiB
+    manifests:
+      sha256:0bc94a614ac031c45530e18b702fa102a349f40c24a59b16d536f8199d3b04ff
+      sha256:119265db56646a10f10947f14ed12e5b409ff8c5cc3bdc3ef9d3f3d3364b82f6
+      sha256:1cbe10ebc4c421a53bf9a652596efe5510a8591bf9cf1336729fa8bef9a8963c
+      sha256:363822fd64a18478e51fd30c6851172c4554cff467059e61d643e8d048fe4cec
+      sha256:435d314d38947a8cc87880957f09ce8dfd6269cbcc4d4474ae1a128ddf93f04d
+      sha256:753aa77878a0081118266cf12fc3715723b623633d5eaafb658d8ff0bcec6bf2
+      sha256:83ba24d948341f4b768fbff7212f6109c75b784229d184a2556078e036873025
+      sha256:8968f9ce2e74fdc5d8256c5a5c3f34ae6db8f6f86de0149fd66168168df54015
+      sha256:bd257297e0fc1269905c4211b4650e5863d13b8700b2a981b2a6c58f216e47a2
+      sha256:c137a9b5a58a7e74526ed6285fe30eafbaaf34cf8f88c76ec607df955cbc9519
+      sha256:cd473c718cf65172a4cfa37c8fe9cbe7ab020bfa0cad3793dd9a51b8e6cb2c9e
+      sha256:d1b1fc1c4e215ab53266800aff65e6b83278ab9add1a416e0a991f111b8af47b
+      sha256:f7893725ed892239b1896ecfe3e0bb8152a70881e277c0def2df1b5e18f96c56
+      sha256:119265db56646a10f10947f14ed12e5b409ff8c5cc3bdc3ef9d3f3d3364b82f6 -> 85ee8fab
+      sha256:c137a9b5a58a7e74526ed6285fe30eafbaaf34cf8f88c76ec607df955cbc9519 -> 8d0ec9fc
+      sha256:f7893725ed892239b1896ecfe3e0bb8152a70881e277c0def2df1b5e18f96c56 -> d74c6e27
+  openshift4/ose-kube-rbac-proxy
+    blobs:
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:9ab4182c2bfadf02e03bf6f92a366cd8d9e0e760abe30727538b54491201ac8c 1.42KiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:fd464176d200a96c67f45dd10129481cbb797d604395b3240f80fcef996f5f4c 1.425KiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:46369f78796f28a4e4bbb2298a753af43af7834c418dc5fb4c717d580ae6e52e 1.426KiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:9029d856fd03ae63d1c975795fff5265f3947ef5313d14f413e4d0fac74da551 1.426KiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:f0696e2e6e881a72eb463f3df90a18bf158d0fa295714420091fe2f5beb2074d 1.426KiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:39382676eb30fabb7a0616b064e142f6ef58d45216a9124e9358d14b12dedd65 1.428KiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:5e6920d5affe7a85fb62fffa4ff5285701d12f0a5777bbd21f32c0e789dd748a 1.428KiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:8038dd80caa254828a7f9c85460c13c827cb61aa57fee5b9e78d92f4aa1cb54e 5.726KiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:317fbde8e2b2589d99e3fd103de1321fb1563cbbdae738a3d421f48666c43b27 5.728KiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:8ab804b87d90ec7c4f329ac45b62127ff96e1eb72b0e370551fc4dae70209613 5.728KiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:a8f919bce518dc160221102b0f4d5cbbe8979b8cc2c38f71fce142f2ea2f9771 5.728KiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:7768b5ddf996bf2d0fa298c64c6f9f2f1140a21402e1984723ca5ca8c2848693 5.729KiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:aaf0ccd15df72e56b62078c6c515f5d084ee87794ec26c6e84922d9f4e21fd38 5.729KiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:fe0efddaa353cb24a45beeee62716a52155d3615e645989db146298c61ef03ab 5.729KiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:9d629822904b3ae7a78c71e4009accf5d370816f5308368d047675bf2e809f9f 5.74KiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:c576071dfc1d3cef705848f15fe98ad395d0a3219893c35eaa51caded8d75d0d 5.74KiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:38657d45a12863cf6115becd6a4b0b47a904a7a9f7cbbccc1950a3caa4f27689 5.741KiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:94362a98952b7d06aedd23c64c69357c9b7f886a90adac4839b081ea83443a31 10.43MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:726acff89796815b6fbc76ae2a0551949d8677d5345c3cf63c9d75fcbbf88eb6 10.43MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:f07762ea04d5aa2f4b0a423333f905143583e1a2a9830374340f31521729030d 10.54MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:28ef59df406a7f72420d94c9f2b55ed3aee000869b7a5bb7e61c838d62cf2c02 10.54MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:1afb83553d635bd3d1a362b6fdafb636cebb4e2164a5733532dc6b29aa2e023d 10.62MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:4b4fa837bd5769603e4f6524184e06b9a8e06d8d1e25af8cc39696d2262cb206 10.71MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:eb0703b204cfbf670dca262a9e9d04922a33ef195fc851fae7b536e0b68abf55 10.77MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:acc3c976ac75521c922cf4e11572dd3f6631d19df2fcbbac798d9ceb3507d45c 11.14MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:16534c517e67808030b585c03f3d5f460f41b2726739e5f7dbcd5b3e9d1c882a 11.15MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:987221a77e1f5540207d25a0e3c243c2225320c630e71b9433f5838c807086c9 11.33MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:4bd4969436a7a239bb362488cb70bfd6a50d0f25d17d9b4411b31fa66a5cb856 15.1MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:16dc99702748c331dcd1ff87b1df36ebd7d0a2cff27d37eaa4bfe68a58d01603 15.2MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:bd80971c62b783b388d270e07eb5298b439a726538ebe36bf2fccfacd45589b8 15.56MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:e0f53eb44a8ddfd6aeba8ea92b21b2ea3d2db6ff4e81385132f91a9d98017bd4 15.64MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:46d6f57c81ac369ef4ad71ae4078d6c2026e7872fdd6955017ca819d18072842 15.88MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:cca77bf9c3025e3609a6ae14da5f7eeb59db83317eaf67c7c4b85fe91438a571 16.11MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:f93e08b972e7b9051432d5ad44fee4efd261461622806342a03b79571ec0fbaa 16.11MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:b2ae9e688c0e4641170062bb34e71929b7f8f3cda81d71798d567cd54574c084 16.29MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:70975922084bc50a4fa67e0baa43b0e4f9ffacfcefa9f588ee901c62ee846feb 16.38MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:9da0528d44b30a4f4ad041489ae9d79087bda0ac37dccde7e3e63497bf7205be 16.5MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:53e613e6bf26018f653141907c9c3b6c24274e8480d955512132be683d320352 17.39MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:4380a10564e7f0ffe0fa397eee2ad8f07ad164370dc9943c03f9139bf8323ffe 17.46MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:dbeaa7bd632ba9223468f17fe8e01f3d5b84ef4fa41fd77f4c6f128eee13e29e 17.54MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:5f062d5160af5e12a94aa7f300bb96ead3155b82ae18928810312a8077dc521c 17.54MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:688638faf322bed6ab14884ec00b9cb9624c5e73024bc9eca8b57993e18d74b6 17.68MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:a5a2378416fe56b92ebf6bf8d37e1fa8515404a833245c639dc3c344641cdc5a 17.68MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:ef6f7e1fe13e66a0aa9bf1184733fdc596e1218c90c8441f767808a8dbd7a54e 18.62MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:36b768e39a244076e3f135d060185a4166ed80df8382a3f20f20a1eca674b491 18.78MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:471e5250377d59b10b42f0486deabc76453d3a22dc20cce154dadb4cc0e35e50 19.32MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:bddc7336dae7e298911491149215db035310f9754c77d2c0f478fa0c1945d556 20.36MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:2a7c17a4ad7579bc5fb4bc709db63d7852fbdc4fd195629fabd5d2e5ca7718dd 74.14MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:cadc283046514317dd4ecd1438530437d99cc92bf73080fb9e12e76751108de0 76.69MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:4e164a8c5ac173c1683ca572e23b00962ef8ddd2db486762980f8d48117e4f8d 76.79MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:57fce60a81bf84e6b61ce2b64643c9e4c61da77869b95e0641360b42429c0cff 78.52MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:237bfbffb5f297018ef21e92b8fede75d3ca63e2154236331ef2b2a9dd818a02 79.51MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:63dcfccb8725e6cc489621e7e4103def0d6302cba4de38027bd3276b300be5ba 84.18MiB
+      registry.redhat.io/openshift4/ose-kube-rbac-proxy sha256:b3bfb78b869da2ea75182a04179bb0cb2a737a34201dd9cd42f3ec128352223d 87MiB
+    manifests:
+      sha256:036c78fea970d6bbe45aa1097a8ed701c72ce1117404450dd7e717a1bedd2b2a
+      sha256:0a50f810f74d571d7371a80074027f2eb428f61424400ac070743442f47e4272
+      sha256:22a058039a594a12029865d21061c1cd1e22c7ef23538f52fc2c9671995c689c
+      sha256:45ed97c7f8252fa3566b3c5f68cc30bd0b3b9182a483f11ed3d32e55658ce27a
+      sha256:4c2a45ac44848e9defb8ac4224ae517df83a3fa3e94349fb4593cb38dfafc585
+      sha256:543dbcf59475f67ec1fb2c29e8c88ad067e35cda75835924719a2619e0348619
+      sha256:552036784912510925e9315ea5061bfb4a6f31335fcc162b80177b7da26363ab
+      sha256:61a164ad711478ac603242338f7b3c55986319479878b092be128581a823598e
+      sha256:66159ce8eadcd6697e653bddcac81a38bb9c060f3fb27fcc8f07a352870a4428
+      sha256:cc9680f70f4d1e1c6be9d98966e01caee9a3ab3523656ce52b4fbc423c39d7fe
+      sha256:d4c60531f59953f399c6a2b0f8239128cdc2640f72f2d1e9ac4d6add618f9f01
+      sha256:fd73a0644b87fd24ede361dd4f3cc82a1a5cd48235a63c2413779de5a9644cb2
+      sha256:ff4441d4553634913a48ab282b1baa70cbcaca4bc81d3dd805408304b230f098
+      sha256:036c78fea970d6bbe45aa1097a8ed701c72ce1117404450dd7e717a1bedd2b2a -> 48439f7c
+      sha256:61a164ad711478ac603242338f7b3c55986319479878b092be128581a823598e -> cbadfac7
+      sha256:d4c60531f59953f399c6a2b0f8239128cdc2640f72f2d1e9ac4d6add618f9f01 -> 17f68ea3
+  openshift4/ose-oauth-proxy
+    blobs:
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:fd464176d200a96c67f45dd10129481cbb797d604395b3240f80fcef996f5f4c 1.425KiB
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:46369f78796f28a4e4bbb2298a753af43af7834c418dc5fb4c717d580ae6e52e 1.426KiB
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:9029d856fd03ae63d1c975795fff5265f3947ef5313d14f413e4d0fac74da551 1.426KiB
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:9ec91ffaabb327dd30dfa71541d5912995bc09400e2465b395295d5efc638f9a 5.687KiB
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:bcdecfc07dd782bbcbde95f034b1b1bcf5efdb872b014dbcbb6515f0c6d07168 5.687KiB
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:465b5dd6647407fd16c0f7cb49e1b5e964c39992942bdbddf3b75c5df956cc02 5.688KiB
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:cd3711dbe45db1ca5cd72561bacd47a8b383e9e787ec6c6992e5ba306051377c 5.688KiB
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:6d667592a37c4f03deedf75a8f68f1851d6479182c658508334760b32276fdfc 5.699KiB
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:cffa0cd8a333044bd40710017d1f309b381dc4653334c32d5b8e768cae32c790 5.7KiB
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:4bd4969436a7a239bb362488cb70bfd6a50d0f25d17d9b4411b31fa66a5cb856 15.1MiB
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:16dc99702748c331dcd1ff87b1df36ebd7d0a2cff27d37eaa4bfe68a58d01603 15.2MiB
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:403a086c21cd22fa40589f0c7c8462969f5e1dae7ec856cd1c809858e280352d 15.22MiB
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:064eac4957329ab3acca247a6214e0ff0d2391d5cab1d2b6dd31ea0f8e7052b3 15.22MiB
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:bd80971c62b783b388d270e07eb5298b439a726538ebe36bf2fccfacd45589b8 15.56MiB
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:e0f53eb44a8ddfd6aeba8ea92b21b2ea3d2db6ff4e81385132f91a9d98017bd4 15.64MiB
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:70975922084bc50a4fa67e0baa43b0e4f9ffacfcefa9f588ee901c62ee846feb 16.38MiB
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:9da0528d44b30a4f4ad041489ae9d79087bda0ac37dccde7e3e63497bf7205be 16.5MiB
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:5d9f50f76e4c60256b71c344507171ae1a9481333f68a518967b69d0efe0af1e 17.53MiB
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:4bc3a06a7c9b9b2b36a12d0aea1ea2a7ee018ceff8dba853f5363f339fe0456d 17.53MiB
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:d99e4c3b8dd4d00167ad47149935782462eca169fb4737c42e619933287c4bad 17.69MiB
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:3570693f539ccda240df92eaae03d86ce7466a0addc2872bc4c0b4d42660adb6 17.69MiB
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:2a7c17a4ad7579bc5fb4bc709db63d7852fbdc4fd195629fabd5d2e5ca7718dd 74.14MiB
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:cadc283046514317dd4ecd1438530437d99cc92bf73080fb9e12e76751108de0 76.69MiB
+      registry.redhat.io/openshift4/ose-oauth-proxy sha256:63dcfccb8725e6cc489621e7e4103def0d6302cba4de38027bd3276b300be5ba 84.18MiB
+    manifests:
+      sha256:08b3eb667df212d8983ba777920536f2d3b9bd363c2cb718780907fd13aafe13
+      sha256:12757e265f9b0a04939e9f7e2708867c2cc20b0b474b3a11e02edfa8b002d616
+      sha256:20081ac90a5a3b548669d7dcea7e5bd45da7c44dd7279a2ca5baf765d1214e70
+      sha256:2e80a063a29ef4917ec42d4465185ab0ab5b821fc2335c12d8064ab2dedcec1e
+      sha256:6c01bead972377b810fe92313354687f2032ea36666f74a31063566b28239455
+      sha256:85ce36395a59bc42746f7002fae89e677e6ecaaef4db5c351f4eac57f5d381b3
+      sha256:96810c770f75057b8bba6b78a5ba414c8289315d8af1a387f681ae5e4fb7d6dd
+      sha256:eadbaa6bb2f6fe639c8ffe5608dd1cd7769fb7d814f2cda92e4d664b0eabd1c3
+      sha256:12757e265f9b0a04939e9f7e2708867c2cc20b0b474b3a11e02edfa8b002d616 -> c5bd1342
+      sha256:96810c770f75057b8bba6b78a5ba414c8289315d8af1a387f681ae5e4fb7d6dd -> 808a65b8
+  stats: shared=20 unique=173 size=4.997GiB ratio=0.88
+
+phase 0:
+  provisioning.schmaustech.com:5000 openshift-logging/elasticsearch-operator-bundle blobs=7  mounts=0 manifests=3  shared=0
+  provisioning.schmaustech.com:5000 openshift4/ose-oauth-proxy                      blobs=24 mounts=0 manifests=10 shared=12
+  provisioning.schmaustech.com:5000 openshift-logging/elasticsearch6-rhel8          blobs=28 mounts=0 manifests=16 shared=8
+phase 1:
+  provisioning.schmaustech.com:5000 openshift4/ose-kube-rbac-proxy                 blobs=54 mounts=12 manifests=16 shared=12
+  provisioning.schmaustech.com:5000 openshift-logging/elasticsearch-rhel8-operator blobs=28 mounts=8  manifests=16 shared=8
+  provisioning.schmaustech.com:5000 openshift-logging/logging-curator5-rhel8       blobs=40 mounts=8  manifests=16 shared=8
+  provisioning.schmaustech.com:5000 openshift-logging/elasticsearch-proxy-rhel8    blobs=28 mounts=8  manifests=16 shared=8
+  provisioning.schmaustech.com:5000 openshift-logging/kibana6-rhel8                blobs=28 mounts=8  manifests=16 shared=8
+
+info: Planning completed in 5.8s
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-oauth-proxy sha256:cadc283046514317dd4ecd1438530437d99cc92bf73080fb9e12e76751108de0 76.69MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-oauth-proxy sha256:63dcfccb8725e6cc489621e7e4103def0d6302cba4de38027bd3276b300be5ba 84.18MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-oauth-proxy sha256:2a7c17a4ad7579bc5fb4bc709db63d7852fbdc4fd195629fabd5d2e5ca7718dd 74.14MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-oauth-proxy sha256:e0f53eb44a8ddfd6aeba8ea92b21b2ea3d2db6ff4e81385132f91a9d98017bd4 15.64MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-oauth-proxy sha256:064eac4957329ab3acca247a6214e0ff0d2391d5cab1d2b6dd31ea0f8e7052b3 15.22MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-oauth-proxy sha256:d99e4c3b8dd4d00167ad47149935782462eca169fb4737c42e619933287c4bad 17.69MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-oauth-proxy sha256:5d9f50f76e4c60256b71c344507171ae1a9481333f68a518967b69d0efe0af1e 17.53MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-oauth-proxy sha256:bd80971c62b783b388d270e07eb5298b439a726538ebe36bf2fccfacd45589b8 15.56MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-oauth-proxy sha256:9da0528d44b30a4f4ad041489ae9d79087bda0ac37dccde7e3e63497bf7205be 16.5MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-oauth-proxy sha256:403a086c21cd22fa40589f0c7c8462969f5e1dae7ec856cd1c809858e280352d 15.22MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-oauth-proxy sha256:16dc99702748c331dcd1ff87b1df36ebd7d0a2cff27d37eaa4bfe68a58d01603 15.2MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-oauth-proxy sha256:3570693f539ccda240df92eaae03d86ce7466a0addc2872bc4c0b4d42660adb6 17.69MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-oauth-proxy sha256:70975922084bc50a4fa67e0baa43b0e4f9ffacfcefa9f588ee901c62ee846feb 16.38MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-oauth-proxy sha256:4bd4969436a7a239bb362488cb70bfd6a50d0f25d17d9b4411b31fa66a5cb856 15.1MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8 sha256:143b441c3f6dc0876008ff7487f29da9833302594a12b128fc995ba914b2a5eb 133.9MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-oauth-proxy sha256:4bc3a06a7c9b9b2b36a12d0aea1ea2a7ee018ceff8dba853f5363f339fe0456d 17.53MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8 sha256:ef2eedd126d250887935c4eef88d8e0d12f7bcdc2f4a21784111eab0065e6a31 132.7MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8 sha256:a0babb4e67c401ee5c81c2f6d19d835e2e445bb12f47c1c035a99f14dd301392 130.5MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8 sha256:479a285eea48eaef0ff2f0ff86e43deedeccf984de9edcfcd24469e41a706642 137MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8 sha256:7472fa517fd188919c3ff6ec27806dd20311bb57e1e34a7f3998734688fa7b42 81.13MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8 sha256:0c673eb68f88b60abc0cba5ef8ddb9c256eaf627bfd49eb7e09a2369bb2e5db0 74.73MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8 sha256:3f293dc69570341094547d1e5841c52e3e5f672807d667a3d6d955b3bc04465b 134.8MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8 sha256:0426bc76cfcec7ac4a57b924ff9f4f16c778cac6f901740935c8d92292be394b 127.2MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8 sha256:e0444ce29df7b754434fd4557ec395c5a1759e4af71c3615a81471e0c7edeadc 72.84MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8 sha256:4d756d1efa8d4216c9087a9e8d7e2dfd5866a825c7d88f6cbedc9ef75cdee4a0 127.2MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8 sha256:00beaece7ea33c31ff371482a939906501d2eba4bd5e59d49efb12e6421499f0 129.4MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8 sha256:1986cf014b8e11aa06d3d8f65bebefd005377d08a13061c25ec32c2f2d97901c 134.8MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8 sha256:744db8e918c5c882f601488dcdbe3c4e9fa01913fe57119975eb5b16a18f6250 71.97MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8 sha256:42f1bdba73509157bc04b7a2a873c7f34ed0684871c2cba80bfda9ddb2c1bb88 130.5MiB
+sha256:a909c412c3f41c780d193e55611561b89f42e140f02dd2057f9877104beea263 provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-operator-bundle:999cca6f
+sha256:7af1bcccd4219e6f0678bd0570e65e00e6924d0c7013a081a8036168badba724 provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-operator-bundle:52791cb
+sha256:c45340a9bdd7b544b9410d1c52fa6e9b444571d506aa05d6849281df2014ef1c provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-operator-bundle:98515fd6
+sha256:08b3eb667df212d8983ba777920536f2d3b9bd363c2cb718780907fd13aafe13 provisioning.schmaustech.com:5000/openshift4/ose-oauth-proxy
+sha256:2e80a063a29ef4917ec42d4465185ab0ab5b821fc2335c12d8064ab2dedcec1e provisioning.schmaustech.com:5000/openshift4/ose-oauth-proxy
+sha256:eadbaa6bb2f6fe639c8ffe5608dd1cd7769fb7d814f2cda92e4d664b0eabd1c3 provisioning.schmaustech.com:5000/openshift4/ose-oauth-proxy
+sha256:6c01bead972377b810fe92313354687f2032ea36666f74a31063566b28239455 provisioning.schmaustech.com:5000/openshift4/ose-oauth-proxy
+sha256:85ce36395a59bc42746f7002fae89e677e6ecaaef4db5c351f4eac57f5d381b3 provisioning.schmaustech.com:5000/openshift4/ose-oauth-proxy
+sha256:20081ac90a5a3b548669d7dcea7e5bd45da7c44dd7279a2ca5baf765d1214e70 provisioning.schmaustech.com:5000/openshift4/ose-oauth-proxy
+sha256:12757e265f9b0a04939e9f7e2708867c2cc20b0b474b3a11e02edfa8b002d616 provisioning.schmaustech.com:5000/openshift4/ose-oauth-proxy:c5bd1342
+sha256:96810c770f75057b8bba6b78a5ba414c8289315d8af1a387f681ae5e4fb7d6dd provisioning.schmaustech.com:5000/openshift4/ose-oauth-proxy:808a65b8
+sha256:c6c240f1572a3bad0e5ed98da599ec8cf807bba46a5ad321648e4edd133a16fe provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8
+sha256:849379f0269df32524a3faeb5c3d57bf75494159d34395b50eb9452611310054 provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8
+sha256:b73fb8e9127df35d8a7ae199320b11d27e0cce6e962f91cfc17293d50e1aca55 provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8
+sha256:79ed4a8e586776a7d6f0c2d1a18e5d3323504d0dc7a5878cdf032957babe5a5a provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8
+sha256:9ccdc664571e8253482b1742b3752f8ad97f3a3fe6be3cd8a9daa85d11c10598 provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8
+sha256:8abca8585eff035f45616a265500f2ce06ef4e442f13875b3c21211652bf7f7f provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8
+sha256:3a5c08cba4458bfa6eadb89b1021b4c1d079d4dffcf8696e6805aac998134927 provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8
+sha256:c0584e6b83f02d37cd70d1a67dd7dd954c5fb4f387fa9908b01c065801ab5cda provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8
+sha256:cfa7ab769658065d18573d619a814e084dc78e5e037d82c4bbcabf91b4da620b provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8
+sha256:4fad94662f25baf49926835945125fd98146ab22c1bb6137e4ed3941f1ca9216 provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8
+sha256:6654f0fb5a4cc17a7b202c8348ee1a73ec95b2176d07562e4219554ebe9f174f provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8:3094b4ef
+sha256:dcd19739325a15140f8bbfe20f384b404552a382f02d353233470f59af9d5ee9 provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8:ec4de832
+sha256:c2073dba02ece384f46c096cc7d381eada238a44761ff6db9c539a5ecebfbecc provisioning.schmaustech.com:5000/openshift-logging/elasticsearch6-rhel8:df628929
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8 sha256:57cb0cfdadd782c86e4d5cf07335fb64154b959c0d8900496be3735ad2e85138 18.15MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8 sha256:6c425223dd97cc703b8fb2fa0f8904fca09eec06f048ab7dc34ed1e818cf8184 18.15MiB
+mounted: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8 sha256:e0444ce29df7b754434fd4557ec395c5a1759e4af71c3615a81471e0c7edeadc 72.84MiB
+mounted: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8 sha256:0c673eb68f88b60abc0cba5ef8ddb9c256eaf627bfd49eb7e09a2369bb2e5db0 74.73MiB
+mounted: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8 sha256:744db8e918c5c882f601488dcdbe3c4e9fa01913fe57119975eb5b16a18f6250 71.97MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8 sha256:71c93b2a36fbe0bdfc96b6cec8a9da250fea7d28a66fd41fc6db5851e2b59c49 19.72MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8 sha256:885b6d3571ee46af651aea440f9d599e088df7400c0151f4ecf73076d40d4b19 18.18MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8 sha256:85709ddc9cfc3cec7043cd31ebfa53f97f705c50e841e051c6b65df7a8fa680e 19.52MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8 sha256:01b3f5c9eb1b336aa106b3d114a9f8b2a5a3be18a79b4379e6398863d926d45e 15.59MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8 sha256:bf91b897e3a40da210ed4c96dc8cc3c4f073c68b99f3921a32e7b2966430e80b 19.72MiB
+mounted: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8 sha256:7472fa517fd188919c3ff6ec27806dd20311bb57e1e34a7f3998734688fa7b42 81.13MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8 sha256:09cf259d81dce3fa62b7ea83a617358370be170970d0632c2f408f63119d6d8f 18.43MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8 sha256:9a004564f0149b5a45c0f5e118f5a27174a93f245695956b87bfdd33a22a0b7d 19.52MiB
+mounted: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator sha256:7472fa517fd188919c3ff6ec27806dd20311bb57e1e34a7f3998734688fa7b42 81.13MiB
+mounted: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator sha256:0c673eb68f88b60abc0cba5ef8ddb9c256eaf627bfd49eb7e09a2369bb2e5db0 74.73MiB
+mounted: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator sha256:e0444ce29df7b754434fd4557ec395c5a1759e4af71c3615a81471e0c7edeadc 72.84MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator sha256:7c9d5c29c097ad4d27db3724ef111af9c58078fecb740c18ea9970fabd01d34b 15.84MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator sha256:c1d4d222568b0b98997645cda3c807a4ebb28b42ef841afc4f7c3c43553c25c5 20.49MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator sha256:1f1fa47b3cc066feefb22630ab9b3ef776ca8b1d1736f71c0767259f54713928 19.91MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator sha256:b02c54fa38a684229c0ade3eb5eea8fa4a30d67912a52cd043dcf55384e1b5c8 18.26MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator sha256:0f713f2e5c06198b19c74201ea100622e5e12e69895b3c0dba3e283bfbb8e87e 19.77MiB
+mounted: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator sha256:744db8e918c5c882f601488dcdbe3c4e9fa01913fe57119975eb5b16a18f6250 71.97MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator sha256:6997a911916b353da05a0b7a1351170bb927c13f6f0dc3d080d7e149f2e3a3a0 18.47MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator sha256:b4173d05a32d6fb3368cf44b57886adcde807ba7b471e6ed2cbe7f5687c13435 17.46MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator sha256:1df48d2eae98da38c1789e39d4766c1cae09c9c38107d9c89949c12f3efa290e 19.09MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator sha256:594dca45124d8d7bbc1b46fb96940ff5f60d20882c3ea2593fa5e68e0d417e9c 20.34MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator sha256:d79db737310b836ed8074695d801a5ff6a82c6cba60b302fdfea50a883921bf1 17MiB
+mounted: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:2a7c17a4ad7579bc5fb4bc709db63d7852fbdc4fd195629fabd5d2e5ca7718dd 74.14MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:726acff89796815b6fbc76ae2a0551949d8677d5345c3cf63c9d75fcbbf88eb6 10.43MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8 sha256:71c87f12ca0e35fd76a6f713512e8c85f660683abab8c1fbf3806ee34920c46c 18.42MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:f07762ea04d5aa2f4b0a423333f905143583e1a2a9830374340f31521729030d 10.54MiB
+mounted: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:63dcfccb8725e6cc489621e7e4103def0d6302cba4de38027bd3276b300be5ba 84.18MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:5f062d5160af5e12a94aa7f300bb96ead3155b82ae18928810312a8077dc521c 17.54MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:1afb83553d635bd3d1a362b6fdafb636cebb4e2164a5733532dc6b29aa2e023d 10.62MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:57fce60a81bf84e6b61ce2b64643c9e4c61da77869b95e0641360b42429c0cff 78.52MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:53e613e6bf26018f653141907c9c3b6c24274e8480d955512132be683d320352 17.39MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:ef6f7e1fe13e66a0aa9bf1184733fdc596e1218c90c8441f767808a8dbd7a54e 18.62MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:16534c517e67808030b585c03f3d5f460f41b2726739e5f7dbcd5b3e9d1c882a 11.15MiB
+mounted: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:bd80971c62b783b388d270e07eb5298b439a726538ebe36bf2fccfacd45589b8 15.56MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:471e5250377d59b10b42f0486deabc76453d3a22dc20cce154dadb4cc0e35e50 19.32MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:4b4fa837bd5769603e4f6524184e06b9a8e06d8d1e25af8cc39696d2262cb206 10.71MiB
+mounted: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:e0f53eb44a8ddfd6aeba8ea92b21b2ea3d2db6ff4e81385132f91a9d98017bd4 15.64MiB
+mounted: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:16dc99702748c331dcd1ff87b1df36ebd7d0a2cff27d37eaa4bfe68a58d01603 15.2MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:f93e08b972e7b9051432d5ad44fee4efd261461622806342a03b79571ec0fbaa 16.11MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:b2ae9e688c0e4641170062bb34e71929b7f8f3cda81d71798d567cd54574c084 16.29MiB
+mounted: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:70975922084bc50a4fa67e0baa43b0e4f9ffacfcefa9f588ee901c62ee846feb 16.38MiB
+mounted: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:4bd4969436a7a239bb362488cb70bfd6a50d0f25d17d9b4411b31fa66a5cb856 15.1MiB
+mounted: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:cadc283046514317dd4ecd1438530437d99cc92bf73080fb9e12e76751108de0 76.69MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:cca77bf9c3025e3609a6ae14da5f7eeb59db83317eaf67c7c4b85fe91438a571 16.11MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:36b768e39a244076e3f135d060185a4166ed80df8382a3f20f20a1eca674b491 18.78MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:bddc7336dae7e298911491149215db035310f9754c77d2c0f478fa0c1945d556 20.36MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:28ef59df406a7f72420d94c9f2b55ed3aee000869b7a5bb7e61c838d62cf2c02 10.54MiB
+mounted: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:9da0528d44b30a4f4ad041489ae9d79087bda0ac37dccde7e3e63497bf7205be 16.5MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:acc3c976ac75521c922cf4e11572dd3f6631d19df2fcbbac798d9ceb3507d45c 11.14MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:eb0703b204cfbf670dca262a9e9d04922a33ef195fc851fae7b536e0b68abf55 10.77MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:46d6f57c81ac369ef4ad71ae4078d6c2026e7872fdd6955017ca819d18072842 15.88MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:dbeaa7bd632ba9223468f17fe8e01f3d5b84ef4fa41fd77f4c6f128eee13e29e 17.54MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:4e164a8c5ac173c1683ca572e23b00962ef8ddd2db486762980f8d48117e4f8d 76.79MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:b3bfb78b869da2ea75182a04179bb0cb2a737a34201dd9cd42f3ec128352223d 87MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:a5a2378416fe56b92ebf6bf8d37e1fa8515404a833245c639dc3c344641cdc5a 17.68MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:94362a98952b7d06aedd23c64c69357c9b7f886a90adac4839b081ea83443a31 10.43MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:4380a10564e7f0ffe0fa397eee2ad8f07ad164370dc9943c03f9139bf8323ffe 17.46MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:237bfbffb5f297018ef21e92b8fede75d3ca63e2154236331ef2b2a9dd818a02 79.51MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:987221a77e1f5540207d25a0e3c243c2225320c630e71b9433f5838c807086c9 11.33MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:c37fd7de0840b4031b29e532b9c694c59a63983ae93162a2e6476882cd075b21 16.53MiB
+uploading: provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy sha256:688638faf322bed6ab14884ec00b9cb9624c5e73024bc9eca8b57993e18d74b6 17.68MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:a1acc2fd53cd4b8369b226d144c216d25d9c1a380745768f496afbc3f48a1298 16.34MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:c54fd38fa8e85b2fb449666efa98198e9664b52a6f3602c0a4a8667186f12b99 16.94MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:937bf243b00d655660ed34f27c7d3b34d35b6773132db86e176584f6706cdfcf 142MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:37824726d5db14cd27b31672cc85b982a3cbb241d267997ac14d88305d7314cd 63.02MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:646863affa911f2c19ab3171d96c762f6771b56abc1bbb59fe37618d25b9074e 9.864MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:dd2de847c8709912f53afe9b923c4162d8d952acf40c71aa5cb558ee8b51069a 59.27MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:d279a707031eec5e0f9b724a7cd01341b9462eeaa0440f3fc72315523ba7f263 9.87MiB
+mounted: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:744db8e918c5c882f601488dcdbe3c4e9fa01913fe57119975eb5b16a18f6250 71.97MiB
+mounted: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:e0444ce29df7b754434fd4557ec395c5a1759e4af71c3615a81471e0c7edeadc 72.84MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:7c111161f1c7d02527fdd542b9453a099b83c39431d260981e58cdaf9b9b2122 9.869MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:f120a28ad0333fad7128621e7e926d5f031fb8ce7524c48eaacbe50d2d2659d0 9.87MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:e7b19f7fb76205a1eeff179c33d6dd5b42f54cbd78a31da78b4de061b7efee56 57.73MiB
+mounted: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:0c673eb68f88b60abc0cba5ef8ddb9c256eaf627bfd49eb7e09a2369bb2e5db0 74.73MiB
+mounted: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:7472fa517fd188919c3ff6ec27806dd20311bb57e1e34a7f3998734688fa7b42 81.13MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:7147b3e78d611407487bf504aca3c53a567ce827a9bc60213a018f8743315da6 129.7MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:9e25df444adda9ace9a6b12845bc467f66ce28210e0e861345b09dfb1a4934f4 54.74MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:7fc90ec5910cc61ec9ef343b45afa4686f5fce8d315e035e715173a644e594f9 9.841MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:976a6ec80cde45dfeae673daa8dbc621636ede774c75b83baa54f7156fff32f3 9.863MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:a08701cfb02c70f5a591f61b704143efc204eea4741b001dfaadf1dc1e418abd 9.863MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:bf105214519e48fd5c21e598563e367f6f3b7c30996d1745a99428752c0ad1ae 135MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:a91c5a52790333e1e3745df0653ca99a97fcd2e8e62afe4554e5e073539a8632 9.869MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:1ec3039ee2083ddda0023477b8b6ce4953997b4ca67abdeae1be577be165745a 16.37MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:cae34425c559694a7a6f072c2486b4b9353f567f1591ab9460e507232f7eccce 129MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:3a42a12285a14c214f7dc65ce11f7d824720bd957c37799819e4d5fab9bfbeb9 9.87MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8 sha256:a8c993030847eb9dd7df137c4c1870668567f3ee08c23a0ce6aaae850a73dae0 9.868MiB
+sha256:9375a864efbb3011eb4b9e1754b338d8875a0cc70fc46996dec07946d4c9a2ae provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8
+sha256:f0bee519bb4f20aa1b7f4a1ca01db0d6a068bbcc0fa07416c242c0acffc83422 provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8
+sha256:dda0674e21d5372ca54a504727e065ff2700e2b9d4a2d7c32aa0021ffd317d8c provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8
+sha256:b95246b7c3d0f619c92595918f9959d4d4540f492184f40353ecac5788370d3b provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8
+sha256:90cffb969ef49252a28fc5542eca6ad4dae64d4145a59643342b3409d34250c2 provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8
+sha256:5ed92d7ac40e29491d237353b27237b38824eff3fe983628f199ff4ab6431ca1 provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8
+sha256:99bddf1517cd5c323b34fd4690c59ed3592f812f959a43981df1cc78bed27cc9 provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8
+sha256:81436241c1042cff2523bfcc73d050700efa107b3fb41c0475ae18b4a3b7b43c provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8
+sha256:59c4a4b20ad42a32f09c60fada67a9f20c237e8dce8ece678dced5c37a87b65b provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8
+sha256:5830aaf028a6a94ade5bb40840180911dd80ef0dc4eb93080cf8bde3476cd585 provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8
+sha256:2305040b28a6443a794956b3d854abe7e05756228055967f24689f191ef7596f provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator
+sha256:42f31b5843a05f5813fbd277f6304fe9e3f170fe516b35a0b1f93a0be8d936e1 provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator
+sha256:19580a0c859f4970c09131b11f1717a417bf0fce987b0d0d0ec14aa0ae41123a provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator
+sha256:150f56a69ff535982d1af00896a1b0f951cbb75666f9d139811a79b29e86b04b provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator
+sha256:c0fb2fe7c385dcac5e5e5cd587ab5ef0b27c6cb821a62a0927a80bc2e9b7c96b provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator
+sha256:0ca3b10eeed3148fdde0cc79e379e6cf5b66fb8df18ea810cf58838caaf92f70 provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator
+sha256:594b6b4c6224276ee07c5b1953ba71bc8ba1eb0536d244d6cd64c0c0e971fa31 provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator
+sha256:5bf6c8da6f400c6ca0ed3a0294f614f45bdc2477759708723d77d15cfab52e34 provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator
+sha256:0d0bd7b54472b47a65480f5b5832b773c5c79161eedbc15cbf80a8615f7d7e47 provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator
+sha256:a834960d45d27966bb4f866b87014c02b80c463cf0298fecb2d943b51200d2dd provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator
+sha256:45ed97c7f8252fa3566b3c5f68cc30bd0b3b9182a483f11ed3d32e55658ce27a provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy
+sha256:0a50f810f74d571d7371a80074027f2eb428f61424400ac070743442f47e4272 provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy
+sha256:22a058039a594a12029865d21061c1cd1e22c7ef23538f52fc2c9671995c689c provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy
+sha256:4c2a45ac44848e9defb8ac4224ae517df83a3fa3e94349fb4593cb38dfafc585 provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy
+sha256:66159ce8eadcd6697e653bddcac81a38bb9c060f3fb27fcc8f07a352870a4428 provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy
+sha256:cc9680f70f4d1e1c6be9d98966e01caee9a3ab3523656ce52b4fbc423c39d7fe provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy
+sha256:fd73a0644b87fd24ede361dd4f3cc82a1a5cd48235a63c2413779de5a9644cb2 provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy
+sha256:552036784912510925e9315ea5061bfb4a6f31335fcc162b80177b7da26363ab provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy
+sha256:ff4441d4553634913a48ab282b1baa70cbcaca4bc81d3dd805408304b230f098 provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy
+sha256:543dbcf59475f67ec1fb2c29e8c88ad067e35cda75835924719a2619e0348619 provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy
+sha256:bbe43427c7cbd4007ff673afbae66070c4ed0302d82068ab987a996076d68d79 provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8:546637da
+sha256:4229507d8b89b1a24f16477661b41a4a7a6925d90fed348dd609978297fe88c4 provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8:95da220c
+sha256:8f2b1b2b15cab8a10b70a16e0af15dd73f0cf6932b16aac07c872beab229392d provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-proxy-rhel8:aea12e2c
+sha256:0fd6cac32b8d10b0eaeecdd38c50df577067bd9ef27f20a8d03dba053e3aab04 provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator:2a020a6
+sha256:32072064d66d79c1464a4f36bdba832e7ece25ed0c011b6e4a17d132408767aa provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator:3b9c8a03
+sha256:04c57db2d67b32fa53f021ea003704226517e493b6cc655aba02aab0d23323a1 provisioning.schmaustech.com:5000/openshift-logging/elasticsearch-rhel8-operator:269efb57
+sha256:036c78fea970d6bbe45aa1097a8ed701c72ce1117404450dd7e717a1bedd2b2a provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy:48439f7c
+sha256:d4c60531f59953f399c6a2b0f8239128cdc2640f72f2d1e9ac4d6add618f9f01 provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy:17f68ea3
+sha256:61a164ad711478ac603242338f7b3c55986319479878b092be128581a823598e provisioning.schmaustech.com:5000/openshift4/ose-kube-rbac-proxy:cbadfac7
+uploading: provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8 sha256:02198392e06307f51ca3bc77e199c9e040af1fca1efa5bcda2a353f529ad82f5 107.1MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8 sha256:13966aee5eabd568c53761e7b565a699b6306dceb1f8dc37fbe233ed32bb01df 110.4MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8 sha256:285aca8b4565e008e8274c6ff136f49ff5abcd91c71c47b10861f978a65987f3 106.8MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8 sha256:7bce98aa4e08dd538229d5a73c4b3a46bdff3cb8d12f928b68fc254798811331 110.4MiB
+mounted: provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8 sha256:0c673eb68f88b60abc0cba5ef8ddb9c256eaf627bfd49eb7e09a2369bb2e5db0 74.73MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8 sha256:a1228ff2a3593e6da7b42f70f4802a35c5d6ce19177e5932d06727630590ab70 107.1MiB
+mounted: provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8 sha256:744db8e918c5c882f601488dcdbe3c4e9fa01913fe57119975eb5b16a18f6250 71.97MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8 sha256:ae7d948d4fe3dd8bbb1c9cd9d0302c8b9ff250bbb23e5f6a41e517d02419517e 107.1MiB
+mounted: provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8 sha256:e0444ce29df7b754434fd4557ec395c5a1759e4af71c3615a81471e0c7edeadc 72.84MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8 sha256:464be667dc24005da32089e22dbb15427626aa52294d8879e10b2e25fed0fe24 110.4MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8 sha256:7c81be05d73326343912066d334f6b63f5e5c6a5f255096e6bf238e80ef5c4de 108.2MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8 sha256:7a3a16f1a7833a8b0669de670a8bcf7618e92a6ea7703bdf1050f09666e8e831 108.2MiB
+mounted: provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8 sha256:7472fa517fd188919c3ff6ec27806dd20311bb57e1e34a7f3998734688fa7b42 81.13MiB
+uploading: provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8 sha256:0d34ba994a88f4ea03d58b93aff34d8d914d7d5d1f58288341f8f4ba863daa8a 108.2MiB
+sha256:83ba24d948341f4b768fbff7212f6109c75b784229d184a2556078e036873025 provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8
+sha256:d1b1fc1c4e215ab53266800aff65e6b83278ab9add1a416e0a991f111b8af47b provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8
+sha256:1cbe10ebc4c421a53bf9a652596efe5510a8591bf9cf1336729fa8bef9a8963c provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8
+sha256:435d314d38947a8cc87880957f09ce8dfd6269cbcc4d4474ae1a128ddf93f04d provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8
+sha256:753aa77878a0081118266cf12fc3715723b623633d5eaafb658d8ff0bcec6bf2 provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8
+sha256:bd257297e0fc1269905c4211b4650e5863d13b8700b2a981b2a6c58f216e47a2 provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8
+sha256:363822fd64a18478e51fd30c6851172c4554cff467059e61d643e8d048fe4cec provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8
+sha256:cd473c718cf65172a4cfa37c8fe9cbe7ab020bfa0cad3793dd9a51b8e6cb2c9e provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8
+sha256:8968f9ce2e74fdc5d8256c5a5c3f34ae6db8f6f86de0149fd66168168df54015 provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8
+sha256:0bc94a614ac031c45530e18b702fa102a349f40c24a59b16d536f8199d3b04ff provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8
+sha256:c137a9b5a58a7e74526ed6285fe30eafbaaf34cf8f88c76ec607df955cbc9519 provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8:8d0ec9fc
+sha256:f7893725ed892239b1896ecfe3e0bb8152a70881e277c0def2df1b5e18f96c56 provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8:d74c6e27
+sha256:119265db56646a10f10947f14ed12e5b409ff8c5cc3bdc3ef9d3f3d3364b82f6 provisioning.schmaustech.com:5000/openshift-logging/logging-curator5-rhel8:85ee8fab
+sha256:b7562f5d22d8860bca1fd0d4dd7610e84153f111aeced03b7c6646495f3ee5a5 provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8
+sha256:a2f2573009880db9e2e21e68c90bbf0d32192774e0bee60d85a9c1117cc096a5 provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8
+sha256:7ef542a41916c19fae8c3500afc4b575809d0091001709b8df8ef107df046aa7 provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8
+sha256:ece1828d3b83d7d080c14061017a0954454d6eaa1b64cbbe9eeed51d3fbaaa59 provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8
+sha256:64cb1964e1ece3ca7ff609dfe59c974208095200ae79a95517646aef7330f279 provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8
+sha256:f64d3b646c1c0ad13cac02c0e6eab377eccf040c33e896fa5d0c4be90d1f85d4 provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8
+sha256:4c4777c63d906f332d658183f76cc0f7c1eefbfa58adfa6b7b584ab710323ac7 provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8
+sha256:7edf2fbe72e88de3b48ee40b9c960b5b567c27d1902745f7f6d8a5836d89432b provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8
+sha256:64adeb26441159a1d2c3624fdb2a8b76f642f48d1171ce46bbfee7767839c77f provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8
+sha256:20b07dc6e878d6b446f53382d46d619b642f5770b5557185430ce3f1027e9e58 provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8
+sha256:46752e10e726c84be876c1dfd565fba4815054afd71db84af16a854346930a8f provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8:303c8651
+sha256:a7863257f2bd010979de552d78252195f077b17ff28af140f066102fa0893afb provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8:54a9b3fb
+sha256:fcc486c24f642b390d7c77765a33c6fc656719e0ab1345f18f186d6c15f7c12c provisioning.schmaustech.com:5000/openshift-logging/kibana6-rhel8:8d9ad1df
+info: Mirroring completed in 7m47.25s (11.48MB/s)
+Pruning 140 manifest(s) from repository openshift/release
+Pruning 1 manifest(s) from repository openshift/release-images
+Deleting manifest sha256:00bfbe7800a9c803d13e666122a7b1f52bea6e53b0fb2352d8566d1e75759708 from repo openshift/release
+Deleting manifest sha256:dd71b3cd08ce1e859e0e740a585827c9caa1341819d1121d92879873a127f5e2 from repo openshift/release-images
+Deleting manifest sha256:0213887c325d3967d122fe875b45c9259e2b8388db9dc4e0a25c0561414b8737 from repo openshift/release
+Deleting manifest sha256:0305702b3b7208c339c5df376aaacf6992465e34490bc16c2d66e423039b2b06 from repo openshift/release
+Deleting manifest sha256:0310a7b9ec788788a2a6324475add611b5c5304511fe27e7444500fdefbc6ef0 from repo openshift/release
+Deleting manifest sha256:038452cc237d09fbbea348a454007760fb2d04e1e2439e931c505665c2c98071 from repo openshift/release
+Deleting manifest sha256:03cbd8048e00835d29ced43ddb4548e979e51dda727239cfdf027c9ef47339cf from repo openshift/release
+Deleting manifest sha256:0503429fe988d46d901cd8c625c5ca3e27d0eddd151cd6ee2af346c6397fbffe from repo openshift/release
+Deleting manifest sha256:051c76b923d9826bd577aeb1e176a4096a9af47e9a7c1819158282a5a417170b from repo openshift/release
+Deleting manifest sha256:06ca4e45c6ec3aba104a066905322e35b44c8a2c293d9f2821c83ed2cb743633 from repo openshift/release
+Deleting manifest sha256:07c709f51f7383720c2acca830b3441c188ab0f077616d075a5a6bd9cbd1a2e4 from repo openshift/release
+Deleting manifest sha256:0b8a09ab3c370f7ef89319f3ff66cc346bbfc1cc48b58c2d40ef7d61b33a349c from repo openshift/release
+Deleting manifest sha256:0d741e590eee37fd9708609dde99c68f0b8fba9d0d5cee172227037b7446e3c7 from repo openshift/release
+Deleting manifest sha256:0e0a6328ea7449e2b3ecaa057f59f98cb49e2c71b60ea0d9a4f3d358ef472f36 from repo openshift/release
+Deleting manifest sha256:0fdd27a12ee71d1268ef2e7c4cfe8dbdd3a86e3010f77db3f2e530b928fa2a42 from repo openshift/release
+Deleting manifest sha256:1141f74833abe8de6384022fb7a800171640a40464a82669421517f5f7d2a128 from repo openshift/release
+Deleting manifest sha256:119ce8d95beaef7fcc420fb1acc6d311a1a6309a371a1ccc427b64a7f2d1e371 from repo openshift/release
+Deleting manifest sha256:1267dd9b35b81041888212be03415b2fab37d1ac9e0fb4d9ddcf60c72f7a99ad from repo openshift/release
+Deleting manifest sha256:13a775771eb0fbb24216f5cbaeab394426671bf5d7a5aa23268607e51b59ecbd from repo openshift/release
+Deleting manifest sha256:13bb02aabde612c09fe136b0ca02487cb5f48b9ddf871afbe0d4f2b4b1b66b3a from repo openshift/release
+Deleting manifest sha256:183b7a1d2b4d3600a7251eda82f90ff45d4b5324b3bfdba6a091aa735fcff4be from repo openshift/release
+Deleting manifest sha256:18740b88ca23a49a1cbbf3be74bf96ff536e961bb11235d4539cffccda7101ed from repo openshift/release
+Deleting manifest sha256:1938512df87a22d0a3c4f9d7aafa9557d7268f3511b52f9494946bb7478bc2da from repo openshift/release
+Deleting manifest sha256:19ac6ad2cac43fd4134dfed13168ac0761a014ec55d277eb4d1259caac757b04 from repo openshift/release
+Deleting manifest sha256:1bbe2e9e053350f5af04d80e9a088fb6cc5ca7898b8c1dfdeb5269a4befffa60 from repo openshift/release
+Deleting manifest sha256:214b7e2b9bece6260311a2dc28bfc12c379e37186c09582221ec1fe724a995d1 from repo openshift/release
+Deleting manifest sha256:22e31d53a7c6a92176d5a183fd213fff4e2e68c343ccf6cca9c7fc1363e34836 from repo openshift/release
+Deleting manifest sha256:23244e61eaee6a986e1ac26def05a6eeefa3150b9e740787d8ec0be765b6c8ec from repo openshift/release
+Deleting manifest sha256:235f6b6a1c9c41dbf3b8867bdb25da59c5e3a15af93b61fb13b4b5f41814d954 from repo openshift/release
+Deleting manifest sha256:23921ee4c51c3fc5b32598d89233353855b335cb1d3592bd4e14cda9b23aa0e3 from repo openshift/release
+Deleting manifest sha256:251f6fcf7b079421f5ed480db37715ce1fc35e4bbbf859b3ffc449b84d8fd246 from repo openshift/release
+Deleting manifest sha256:279a3393fbb0c344b410de5aed4702ae41c49382a5c271c5a6d915defa72c47a from repo openshift/release
+Deleting manifest sha256:292d0fbd28892d4952e0cd914cb4b1eca7b5b31dad3ff26abbbfe3ee57ea24e6 from repo openshift/release
+Deleting manifest sha256:2ddae06a7ca8031611b8ec5a63050195a5b747c66289b8ad810bc8da73aa58d4 from repo openshift/release
+Deleting manifest sha256:2fc2c9d9fae3070c00239ea3d0d1d9fa7477c99c296b17b2fc352794c535912e from repo openshift/release
+Deleting manifest sha256:2ff95508332a75a0b0b50be84416297781946d0feb687df36c8082baff564857 from repo openshift/release
+Deleting manifest sha256:33001ffab5cba9aaff19e475e0118ea158c99797bf6f3e210832f129ac34d71c from repo openshift/release
+Deleting manifest sha256:3730bafc9c8a397887d4213b220afffe11cb6835ea5754e60a0cfe967efbdaf5 from repo openshift/release
+Deleting manifest sha256:37e092de518988e67fb60bc5eaaa365058b6be6a1877613af5d12e2c4a2ec129 from repo openshift/release
+Deleting manifest sha256:3e4dd326434d115808c7bff14d8a38806c6757d928f2359737496fe6a32b7b4e from repo openshift/release
+Deleting manifest sha256:40302e29af4c6e3e9a6e73544a2fd4239da691b0afde937e76d078a642d30817 from repo openshift/release
+Deleting manifest sha256:406384d7815dc29c85c903318b1a98a2f3bd65b440a9344b71d6ddfa3e98c287 from repo openshift/release
+Deleting manifest sha256:426f99588fbce292824dba75372675b83daea64a1cf5d321fb5e4182fc43867e from repo openshift/release
+Deleting manifest sha256:42eb156593fbc94fa12eaa5938c8335d500e222be370475ee19a57ad7f7f42a8 from repo openshift/release
+Deleting manifest sha256:43150eb3f35005a1c04fa4ed6fef3c8cd3199991658a88530d28cd1a32a5597a from repo openshift/release
+Deleting manifest sha256:4446e75f22adf0e091bb337da46174ba7e82b394da5b04a2dc9c60b749c7cd02 from repo openshift/release
+Deleting manifest sha256:46d7b63794f6ceec9fbcc63bbf170aff5ee3152ccb24ba51b8167ac59a30ca6a from repo openshift/release
+Deleting manifest sha256:4b14ffcea52f9eb5952546634cb26bfb1d523a4dd81382021c71673fed91efa2 from repo openshift/release
+Deleting manifest sha256:4b56346c5c3c09eee6d8d37b6796f1e4f15e5a8de53b2afc6a4d3e6fb780ee24 from repo openshift/release
+Deleting manifest sha256:4b979717b90adb7f1758e00403495f09a24e53bc537dbd2eb69398b83e3d8819 from repo openshift/release
+Deleting manifest sha256:4f4021f6a725ee1bc3c393535742b720ee2fc5ffc978849a2b67fc437debc283 from repo openshift/release
+Deleting manifest sha256:50e0b3eced37efe7c94f746e0260d4750144962ef16ab334b93c08b3635f946c from repo openshift/release
+Deleting manifest sha256:550304f5ac4929e68b97108da732b8271997dee09db91a2d4fb55d3b143ad7eb from repo openshift/release
+Deleting manifest sha256:5982ecdb04297b4c546da927abbbb9bdaf772737e794218c20b43a5d4ede9d22 from repo openshift/release
+Deleting manifest sha256:5a947cf105f932656f89e0a31973fec637a756ea0a66bea80fb623c37a91e7e0 from repo openshift/release
+Deleting manifest sha256:5c4039e2846f73e3703f63a2aa52a27a85d8c3c9c3a076e05e4aac33301a5715 from repo openshift/release
+Deleting manifest sha256:5e33f9d095952866b9743cc8268fb740cce6d93439f00ce333a2de1e5974837e from repo openshift/release
+Deleting manifest sha256:63149966fd4008c90409477bd30490445d8f11dd484009fdcbd665237d1e85a9 from repo openshift/release
+Deleting manifest sha256:644b470e3cc0e417c8766bdecaa4944ded16267a542fc93d477b364a6905fbe7 from repo openshift/release
+Deleting manifest sha256:65f83e849f9cb76bad217bceee4e34a30d062e17a2a1a80237462d26d98e8870 from repo openshift/release
+Deleting manifest sha256:66996ef32742e67e768985c759f248b5af8b503403c9844e535f3a1ee4c24c07 from repo openshift/release
+Deleting manifest sha256:66bf4dc3d0a3f0559c48d7dc7b9b45af7c90e5b6be704421362645d225c09cf8 from repo openshift/release
+Deleting manifest sha256:67cb844c3e059ef41d746d6132ff1a3cf4240bf959191fbf31a680461b95397f from repo openshift/release
+Deleting manifest sha256:6a78c524aab5bc95c671811b2c76d59a6c2d394c8f9ba3f2a92bc05a780c783a from repo openshift/release
+Deleting manifest sha256:6e2a44337dbe5bf89d6f0f16124df38bb86f71c866a9ae38badb450e58e7f42c from repo openshift/release
+Deleting manifest sha256:6e68ba361e31be5dd1b3ecd0fe5318b337b1915d5db2d8b635cb6f8bb8ee7f97 from repo openshift/release
+Deleting manifest sha256:71a76b1a54d9b9ccba384c353db5777f4a3b37fff2c7027225bb534d09565615 from repo openshift/release
+Deleting manifest sha256:72a75a1eecdfe8e42703fcde0bb63c1f5f256dd21dba92bc36edf54e9f2a845a from repo openshift/release
+Deleting manifest sha256:72d072f33452fc8c5fb0751ac3743688cc4d44959654bb0747dad000218f6f05 from repo openshift/release
+Deleting manifest sha256:79c8e38ac956a6be5ba8dfbefc10e30ad0b5d3229ea8951fd9745b57fa5c6a90 from repo openshift/release
+Deleting manifest sha256:7b90fbeebf473c2e85acc23bd116c3d09750377f32a800ae09caeae101d34957 from repo openshift/release
+Deleting manifest sha256:7bc4f0c55d6e8d92cb429337759824f8535e56a172e75b8c82959a4f4f270ab4 from repo openshift/release
+Deleting manifest sha256:7d78a787b5655292d4440942ae018ad5d1c985881c4e9d95d887d4f8450c7899 from repo openshift/release
+Deleting manifest sha256:7f734c4f3a69377a667c97ef00642accf60f2f0020ab89531eea3d650f1a89ca from repo openshift/release
+Deleting manifest sha256:810097f053d1859d516ab784d975d41ae435ee91f5eaa7c90a02e643620c18fb from repo openshift/release
+Deleting manifest sha256:82158554ee3c838c24ac3d894d5c92a30f9e6705e6e17520115a5edd62a2bf75 from repo openshift/release
+Deleting manifest sha256:82bfc9ea845d7948c362061afa266d7e3dc1465cec041371e99cb1bcb5056036 from repo openshift/release
+Deleting manifest sha256:83bc064c1957b18d231d0befd2bf14bcbadb3ebe20ff3b21dc4b23f048aec547 from repo openshift/release
+Deleting manifest sha256:8bbd804da57f3f961ce8cf8057ac7a946166df966bad4bca3295eeb16eadde5b from repo openshift/release
+Deleting manifest sha256:8ce4be01db73a940acf798ea8102dc06f340f3afec470a3af72abfe130114de9 from repo openshift/release
+Deleting manifest sha256:94145128ec7805e478fada43a8a8ade8054fb50b56c97f159fe9da28a56851c7 from repo openshift/release
+Deleting manifest sha256:948def25e5c80edcc357064d740d78b97bb8fa4f940f13d0b501714c7edf57a1 from repo openshift/release
+Deleting manifest sha256:94926d57aaefa23376615302a14a96d4bca45dd6c3184a8595042b0ae847eb1b from repo openshift/release
+Deleting manifest sha256:961b30e0ab62cf04d000c1eb8330e62ff2daf4545ee094d3c9acd4c443e3c5d2 from repo openshift/release
+Deleting manifest sha256:96487fbdd3efaf1ef9c8e34bd17470095daa3dd01bf9c5c42e5c67ee99b21bbc from repo openshift/release
+Deleting manifest sha256:9716b0f99225f7aa9680a8f07fc02c3a8233b010acd332d7c4651d5e0177de3f from repo openshift/release
+Deleting manifest sha256:980d27d0eb312864f4dacf8f125c7a2ec6d507817045517ebfb80ea25601e1f6 from repo openshift/release
+Deleting manifest sha256:9df074e84d628156a71c314708d4cc003e020d3e4948926e30654b5eb0c2a958 from repo openshift/release
+Deleting manifest sha256:9e2d384be6ebe5fc9c089ab3ed1e1f082c180aed520ee4ff306e46fa56c12728 from repo openshift/release
+Deleting manifest sha256:9f56d95ed665c1442fb4ce0b6415dbecf17729372527c46570aee5c372282a1e from repo openshift/release
+Deleting manifest sha256:a4b8af157bd962a43aa8d44707743a6d743b70faeb72548c5a91869a50ae6b5e from repo openshift/release
+Deleting manifest sha256:a4e51611597318e86a82389b481f49a0978d5deb403f705b14346161c0b62104 from repo openshift/release
+Deleting manifest sha256:a6322f222f98adc1585ff8777c73140a56ac3cdcd8a6949309884b79496bcbb6 from repo openshift/release
+Deleting manifest sha256:a928705d99ccf81cfb7c0ef07a515f67a488d7052a2d7ba34ddabaa140295d78 from repo openshift/release
+Deleting manifest sha256:aaaec3417207330eaeb203f459bdd819c27bac1956f1d9f0684f42dc5a3807e6 from repo openshift/release
+Deleting manifest sha256:aaf0854244f356ccb3f1cd70356362ac5ef7a9f227e08128740306430fd75497 from repo openshift/release
+Deleting manifest sha256:ad7e0cca53e098a448f9d5df9ad5410515ee1ed3c83dbbe8ab72fc8ae73b986c from repo openshift/release
+Deleting manifest sha256:b98f4e019aa3cae1ac333a8241bafdbe52caccfcdcd7f640d1a7410dd33dd788 from repo openshift/release
+Deleting manifest sha256:bb0a5b9d4d3d5c774d58e1f2f11abd260ea1b47e79c64047f753d04927b5c202 from repo openshift/release
+Deleting manifest sha256:bb5f32d6a5294d211e7016a3aeefc1a02dd8ce3773747bcead61ab40f3a13366 from repo openshift/release
+Deleting manifest sha256:bc6efcc92aa2dde7d917eb2922e3eb19eeebcd4e8f19a499fc536fc2e45183ec from repo openshift/release
+Deleting manifest sha256:bc7227d80dc8f416eabc2bf1d326fa41ec9ab849b2a06291ef98d25a83f5ccb6 from repo openshift/release
+Deleting manifest sha256:bc820dec82b685d589a6d71fea17baf28d7404d0351d7d91876476c4c2932c0c from repo openshift/release
+Deleting manifest sha256:bd81d21f0593cab25f321b000e8e18f5ff50fb741289261874fa332407b9da05 from repo openshift/release
+Deleting manifest sha256:c017f8b24e9d9a913456373c69dec63e3315ddae052ac6ad9cee25f856abe502 from repo openshift/release
+Deleting manifest sha256:c10376143bb2fc51f72619cb7d45c8905d7c5a10b0150e1a1f65c54a90fff1bc from repo openshift/release
+Deleting manifest sha256:c56c86d030185bda241514593970e80f75ae75afd9bc6288388944bc2a1dfb1f from repo openshift/release
+Deleting manifest sha256:c5c4823cce587db60358f78f2a324a6def77930b0fa392a2939e04041b5a4a6b from repo openshift/release
+Deleting manifest sha256:c6124ae70fd1f19ada3d5930ffc912dd5a3fb09dcffabc6425e9e327a61528fa from repo openshift/release
+Deleting manifest sha256:ca8dc8a6e1a672565fb1db1bdf0bc49d1878bc9621b15b293334937d42a34972 from repo openshift/release
+Deleting manifest sha256:cc04ac8cc0ebd5ac0b7bd69e27a5d3958d311b61e3f78ed896acc2445d5e1ba7 from repo openshift/release
+Deleting manifest sha256:ccd64e8b56711ced7558d8e593ae32867cb2178ea73078f47d20bc7e2e56119b from repo openshift/release
+Deleting manifest sha256:cd13cdf851def78178b6c1072910fcbceabdb121b888cf82377469fea75a0bf3 from repo openshift/release
+Deleting manifest sha256:ce897bc72101dacc82aa593974fa0d8a421a43227b540fbcf1e303ffb1d3f1ea from repo openshift/release
+Deleting manifest sha256:cf33109e11798f970fa181f7ab08be92301b245dc2b7d17226f38b4146d585cd from repo openshift/release
+Deleting manifest sha256:cff70e2271d5bcc26426cf3f22f3439219677e6175fcaa00c2e5a5da9379d5d6 from repo openshift/release
+Deleting manifest sha256:d622ce62d93f99c3f5e4ffdcafc19ee3c31f82630185b882c7bd4d332fc435cd from repo openshift/release
+Deleting manifest sha256:d74f9409782832026f98e261089bad47fa50be5282c2775dbe521f5fda0e0ee4 from repo openshift/release
+Deleting manifest sha256:d8c857820a05e64b271622508038330f411f08d87cedd16a3ac13095ed920b4b from repo openshift/release
+Deleting manifest sha256:db28495dcf72f26368357ed71b745c3c7b5e2a40c787bc8a76440f16872a0dbc from repo openshift/release
+Deleting manifest sha256:df22255abc474a2b61b323925f76126fa2f8c99affb1c48c2a0eb16c4b4a1056 from repo openshift/release
+Deleting manifest sha256:e03cefa188318d283eb39b799950a3540d0cfe14becf8995d391dfff5dd0369a from repo openshift/release
+Deleting manifest sha256:e146605c1b75917d26c07268b361134aeda68983b2e2b060c202420b8267aa45 from repo openshift/release
+Deleting manifest sha256:e2998b64e69d5a903a76e5f47f1f9aba9b4f5db13f0dbe265c85121317c1cd33 from repo openshift/release
+Deleting manifest sha256:e5c16190ac98e446c7cf90cba8e14e996f81021ea4a38abd17b87c13b30bd6f8 from repo openshift/release
+Deleting manifest sha256:e79fb8754d7c01a60c1763fe39104343783a6498bf10254b4206eae532c1679e from repo openshift/release
+Deleting manifest sha256:e80f8718cc38cb025680205d890d4f622f975297bc437cf52ae1fbce0e89bf1c from repo openshift/release
+Deleting manifest sha256:eae57963e5746607da7ce8070275abd301ab420ce767706d5b36972f64a0e450 from repo openshift/release
+Deleting manifest sha256:edc8e8eafe3f73633f3ffe4a393e21f4495d518e9f044f127a3616315cdd78b4 from repo openshift/release
+Deleting manifest sha256:ee96cf6a6fc395bb5432ba2322c3fa740832ebe490211e53b401f35cbe615636 from repo openshift/release
+Deleting manifest sha256:efbc54ce84c0b4dd7fe7b3e6fa2e6cd488b57d9c6fe7d055ef6395ade51b5906 from repo openshift/release
+Deleting manifest sha256:f0d490ad627c935e07384b942859a938a8445e66486450919537d5bac8f92f62 from repo openshift/release
+Deleting manifest sha256:f22b23274a3f220805ef2b83502d9af379b6841dfbd593d526f072acd6c780dd from repo openshift/release
+Deleting manifest sha256:f2a6bffb17480fb2caa5a52512efa348a09b960d23782d02ec8733df948dbff6 from repo openshift/release
+Deleting manifest sha256:f5628b30aa047fe32cba9308c70c581f7d9812f40a3e651a84f0532af184bfd2 from repo openshift/release
+Deleting manifest sha256:f60434187e593c079d98e94b6ba69bce34e5daa5ac161e834827d594b070592b from repo openshift/release
+Deleting manifest sha256:f7ce7247375fa57b2be95733fb26a85751a5f41b28652e96612bea2ee6a25442 from repo openshift/release
+Deleting manifest sha256:f83965a48127fcd265ef40ce6037df806980a088f8c83798be5b91e5cc09a706 from repo openshift/release
+Deleting manifest sha256:fd41b7237cac235fead9bda6dc9bf5c6cbde163ebf9d9249f33065d5ceadded0 from repo openshift/release
+Deleting manifest sha256:fd7ce3da297b589c7b3c34f6dc820f4d71a51ec367424749e76fbfad06298456 from repo openshift/release
+Deleting manifest sha256:fe552892df8d59716997e8149a384ef65cade7610de3264652eb77e2d93575ed from repo openshift/release
+Rendering catalog image "provisioning.schmaustech.com:5000/redhat/redhat-operator-index:v4.10" with file-based catalog 
+Writing image mapping to oc-mirror-workspace/results-1660660213/mapping.txt
+Writing CatalogSource manifests to oc-mirror-workspace/results-1660660213
+Writing ICSP manifests to oc-mirror-workspace/results-1660660213
 ~~~
 
 ### Prefer Direct Update Paths and Skip Intermediate Releases
@@ -843,6 +1613,10 @@ mirror:
 EOF
 ~~~
 
+~~~bash
+
+~~~
+
 ### Select Image Content Based on Version Range
 
 ~~~bash
@@ -859,6 +1633,10 @@ mirror:
         minVersion: 4.9.13
         maxVersion: 4.9.26
 EOF
+~~~
+
+~~~bash
+
 ~~~
 
 ### Pruning Images
@@ -887,7 +1665,6 @@ Found: oc-mirror-workspace/src/publish
 Found: oc-mirror-workspace/src/v2
 Found: oc-mirror-workspace/src/charts
 Found: oc-mirror-workspace/src/release-signatures
-No metadata detected, creating new workspace
 provisioning.schmaustech.com:5000/
   ubi7/ubi
     blobs:
@@ -1002,3 +1779,5 @@ As we can see on the second run we uploaded the ubi8 image and then proceeded to
 ~~~bash
 
 ~~~
+
+Hopefully these example gave a good idea on how the oc mirror plugin works and how it simplifies the mirroring process for disconnected environments.  I personally found it a lot more user friendly then the old style of mirroring content specifically when it comes to dealing with operators.  
