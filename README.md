@@ -520,6 +520,36 @@ Writing image mapping to oc-mirror-workspace/results-1660659095/mapping.txt
 Writing ICSP manifests to oc-mirror-workspace/results-1660659095
 ~~~
 
+We can see from the output that the images for 4.9.12 were mirrored and oc mirror created a output directory where we can find our imageContentSourcePolicy(ICSP) file:
+
+~~~bash
+$ ls -l oc-mirror-workspace/results-1660659095
+total 36
+drwxrwxr-x. 2 bschmaus bschmaus     6 Aug 16 08:55 charts
+-rwxrwxr-x. 1 bschmaus bschmaus   401 Aug 16 09:11 imageContentSourcePolicy.yaml
+-rw-rw-r--. 1 bschmaus bschmaus 29131 Aug 16 09:11 mapping.txt
+drwxrwxr-x. 2 bschmaus bschmaus    52 Aug 16 08:55 release-signatures
+~~~
+
+And here is what the contents of the imageContentSourcePolicy.yaml file look like:
+
+~~~bash
+$ cat oc-mirror-workspace/results-1660659095/imageContentSourcePolicy.yaml
+---
+apiVersion: operator.openshift.io/v1alpha1
+kind: ImageContentSourcePolicy
+metadata:
+  name: release-0
+spec:
+  repositoryDigestMirrors:
+  - mirrors:
+    - provisioning.schmaustech.com:5000/openshift/release
+    source: quay.io/openshift-release-dev/ocp-v4.0-art-dev
+  - mirrors:
+    - provisioning.schmaustech.com:5000/openshift/release-images
+    source: quay.io/openshift-release-dev/ocp-release
+~~~
+
 Now lets show another mirroring example for an operator.  In this case I just randomly picked elasticsearch as my operator.  Let us go ahead and create the imageset configuration file for the operator:
 
 ~~~bash
