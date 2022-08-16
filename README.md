@@ -3049,7 +3049,11 @@ Writing ICSP manifests to oc-mirror-workspace/results-1660175306
 
 As we can see on the second run we uploaded the ubi8 image and then proceeded to delete the ubi7 image from the registry thus pruning it.   If we had wanted to keep both images on our registry we would have needed to specify both in our imageset configuration file.
 
-### OSUS Graph Creation
+### OpenShift Update Service Graph Creation
+
+The OpenShift Update Service (OSUS) provides over-the-air updates to OpenShift Container Platform, including Red Hat Enterprise Linux CoreOS (RHCOS). It provides a graph, or diagram, that contains the vertices of component Operators and the edges that connect them. The edges in the graph show which versions you can safely update to. The vertices are update payloads that specify the intended state of the managed cluster components.
+
+With oc mirror we can also mirror the graph data to our disconnected registry which enables our disconnected clusters to still show the visual of what versions we can update to.  In this example we will take the original 4.9.12 imageset file we created and just add the graph: true option.
 
 ~~~bash
 $ cat << EOF > ~/imageset-configuration.yaml
@@ -3067,6 +3071,8 @@ mirror:
     graph: true
 EOF
 ~~~
+
+Now with the updated imageset we can run the oc mirror command again.  Can you catch watch changed in the output?
 
 ~~~bash
 $ oc mirror --config=imageset-configuration.yaml docker://provisioning.schmaustech.com:5000 --dest-skip-tls
@@ -3516,5 +3522,39 @@ Writing image mapping to oc-mirror-workspace/results-1660664346/mapping.txt
 Writing UpdateService manifests to oc-mirror-workspace/results-1660664346
 Writing ICSP manifests to oc-mirror-workspace/results-1660664346
 ~~~
+
+With our imageset run complete we may have noticed one additional item was shown in the output.  Did we see the following:
+
+~~~bash
+Adding graph data
+~~~
+
+This tells us that along with the images being mirrored the graph data for OSUS was also mirrored into our local registry.  But oc mirror did more for us as well.   If we look in the ICSP manifest directory we will see something else:
+
+~~~bash
+$ ls -l oc-mirror-workspace/results-1660664346
+total 40
+drwxrwxr-x. 2 bschmaus bschmaus     6 Aug 16 10:37 charts
+-rwxrwxr-x. 1 bschmaus bschmaus   642 Aug 16 10:39 imageContentSourcePolicy.yaml
+-rw-rw-r--. 1 bschmaus bschmaus 29415 Aug 16 10:39 mapping.txt
+drwxrwxr-x. 2 bschmaus bschmaus    52 Aug 16 10:37 release-signatures
+-rwxrwxr-x. 1 bschmaus bschmaus   351 Aug 16 10:39 updateService.yaml
+~~~
+
+There appears to be an updateService.yaml file along with our imageContentSourcePolicy.yaml.   Lets take a look at whats inside:
+
+~~~bash
+$ cat oc-mirror-workspace/results-1660664346/updateService.yaml
+apiVersion: updateservice.operator.openshift.io/v1
+kind: UpdateService
+metadata:
+  name: update-service-oc-mirror
+spec:
+  graphDataImage: provisioning.schmaustech.com:5000/openshift/graph-image@sha256:dc4221e8fa732873152ca822ed110d4c425ad664f2882b315bedc504780d6e1d
+  releases: provisioning.schmaustech.com:5000/openshift/release-images
+  replicas: 2
+~~~
+
+It appears to be a UpdateService custom resource showing where to find the graph data in our local registry.  Its just another example of oc-mirror and its capabilities in action.
 
 Hopefully these example gave a good idea on how the oc mirror plugin works and how it simplifies the mirroring process for disconnected environments.  I personally found it a lot more user friendly then the old style of mirroring content specifically when it comes to dealing with operators.  
