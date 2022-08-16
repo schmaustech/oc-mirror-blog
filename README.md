@@ -28,7 +28,7 @@ As I mentioned before oc-mirror was released as technical preview in OpenShift 4
 
 ### Setting Up Initial Mirroring
 
-Before I demonstrate some of the new features of oc-mirror let us first show a few basic mirror examples of mirroring an OpenShift release and also an OpenShift operator.  First lets go ahead and create the OpenShift release imageset configuration.   In this example I am going to use 4.9.12 as the only release version I want to mirror:
+Before I demonstrate some of the new features of oc-mirror let us first show a couple basic mirror examples of mirroring an OpenShift release and also an OpenShift operator.  First lets go ahead and create the OpenShift release imageset configuration.   In this example I am going to use 4.9.12 as the only release version I want to mirror:
 
 ~~~bash
 $ cat << EOF > ~/imageset-configuration.yaml
@@ -46,7 +46,7 @@ mirror:
 EOF
 ~~~
 
-Now that we have the file create let us go ahead and run the oc mirror command to mirror the contents to our local registry of provisioning.schmaustech.com:5000:
+Now that we have the imageset created let us go ahead and run the oc mirror command to mirror the image contents to our local registry of provisioning.schmaustech.com:5000:
 
 ~~~bash
 $ oc mirror --config=imageset-configuration.yaml docker://provisioning.schmaustech.com:5000 --dest-skip-tls
@@ -818,7 +818,7 @@ mirror:
 EOF
 ~~~
 
-With the operator imageset file created we can now mirror the operator:
+With the operator imageset file created we can now mirror the operator.   Normally one would probably want to have both there OpenShift release and operator in the same imageset but I wanted to break them out here for deomstration purposes.
 
 ~~~bash
 $ oc mirror --config=elasticsearch-operator-imageset-configuration.yaml docker://provisioning.schmaustech.com:5000 --dest-skip-tls
@@ -1594,7 +1594,11 @@ Writing CatalogSource manifests to oc-mirror-workspace/results-1660660213
 Writing ICSP manifests to oc-mirror-workspace/results-1660660213
 ~~~
 
+We can see from the above output the images needed for the elasticsearch operator were mirrored and as part of the operation there were also a few manifests deleting in the process.
+
 ### Prefer Direct Update Paths and Skip Intermediate Releases
+
+With the basics of mirroring out of the way lets explore one of the new features of oc mirror.  Prefer direct path updates or shortest path to an update is a feature that enables one to download the least amount of images for an upgrade path.   In this example we currently have a OpenShift cluster that is at 4.9.12 and we want to bring it up to 4.10.22.  To generate the imageset for this we need to define the channel as the version we want to get to, in this case stable-4.10 and then we specify a minVersion of our starting point which is 4.9.12 and then a maxVersion of 4.10.22 and add in the shortestPath option set to true.
 
 ~~~bash
 $ cat << EOF > ~/shortest-upgrade-imageset-configuration.yaml
@@ -1612,6 +1616,8 @@ mirror:
       shortestPath: true
 EOF
 ~~~
+
+Now that we have created the imageset lets go ahead and run the mirror command to see what happens.  In this example of the mirror command I am going to go ahead and use the --dry-run option which will go through the motions of showing us which images are going to get mirrored but will not actually mirror any data to my local registry.
 
 ~~~bash
 $ oc mirror --config=shortest-upgrade-imageset-configuration.yaml docker://provisioning.schmaustech.com:5000 --dest-skip-tls --dry-run
@@ -3004,6 +3010,8 @@ info: Dry run complete
 Writing image mapping to oc-mirror-workspace/mapping.txt
 Writing image pruning plan to oc-mirror-workspace/pruning-plan.json
 ~~~
+
+We can see from our direct update path run that we needed to obtain images for 4.9.42 since there was no direct path from 4.9.12 to 4.10.22.  However oc mirror ensures it brings in all the images required without the cluster operator needing to do all the guess work!
 
 ### Select Image Content Based on Version Range
 
