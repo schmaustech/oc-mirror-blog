@@ -572,13 +572,13 @@ mirror:
     channels:
       - name: stable-4.11
         minVersion: 4.11.0
-	shortestPath: true
+        shortestPath: true
   operators:
     - catalog: registry.redhat.io/redhat/redhat-operator-index:v4.11
       packages:
         - name: rhacs-operator
           minversion: '3.71.0'
-	  shortestPath: true
+          shortestPath: true
 ~~~
 
 In the above configuration oc-mirror is instructed to mirror from the 4.11.0 OpenShift release onwards as well as start to mirror Red Hat Advanced Cluster Security 3.71.0.  Each time it is executed it determien the newest release of each and mirror that. Because `shortestPath` is set to `true` it will skip any intermediate release unless it is required to make it whatever the latest version is.
