@@ -50,7 +50,7 @@ EOF
 ~~~
 The above example stores the metadata oc-mirror relies on to figure out what it already mirrored in my target registry which makes oc-mirror more portable and independent of the host it is running on.
 
-Now that we have the imageset created let us go ahead and run the oc mirror command to mirror the image contents to our local registry of provisioning.schmaustech.com:5000:
+Now that we have the imageset created let us go ahead and run the oc-mirror command to mirror the image contents to our local registry of provisioning.schmaustech.com:5000:
 
 ~~~bash
 $ oc mirror --config=imageset-configuration.yaml docker://provisioning.schmaustech.com:5000 --dest-skip-tls
