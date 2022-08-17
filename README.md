@@ -423,7 +423,7 @@ Writing image mapping to oc-mirror-workspace/mapping.txt
 Writing image pruning plan to oc-mirror-workspace/pruning-plan.json
 ~~~
 
-The output got shortened to save space, but we can see from our direct update path run that we needed to obtain images for 4.9.42 since there was no direct path from 4.9.12 to 4.10.22.  However oc mirror ensures it brings in all the images required without the cluster administrator needing to do all the guess work!
+The output got shortened to save space, but we can see from our direct update path run that we needed to obtain images for 4.9.42 since there was no direct path from 4.9.12 to 4.10.22.  However oc-mirror ensures it brings in all the images required without the cluster administrator needing to do all the guess work!
 
 Tip: if you want to know upfront if there are mandatory intermediate releases or if there is a direct upgrade path, you can use this awesome tool on the Red Hat Customer Portal: https://access.redhat.com/labs/ocpupgradegraph/update_path?channel=stable-4.10&arch=x86_64&is_show_hot_fix=true&current_ocp_version=4.9.12&target_ocp_version=4.10.22
 
@@ -433,7 +433,7 @@ It will yield the update graph including any required intermediate releases and 
 
 ### Select Image Content Based on Version Range
 
-Another new feature of oc mirror is the ability to select a range of version images for a OpenShift or operator release.   In this example we will demonstrate how to mirror all the images between the release of 4.10.10 to 4.10.22.  First we need to go ahead and construct our imageset configuration and set the minVersion to 4.10.10 and the maxVersion to 4.10.22:
+Another new feature of oc-mirror is the ability to select a range of version images for a OpenShift or operator release.   In this example we will demonstrate how to mirror all the images between the release of 4.10.10 to 4.10.22.  First we need to go ahead and construct our imageset configuration and set the minVersion to 4.10.10 and the maxVersion to 4.10.22:
 
 ~~~bash
 $ cat << EOF > ~/version-range-imageset-configuration.yaml
@@ -452,7 +452,7 @@ mirror:
 EOF
 ~~~
 
-With the imageset configuration file created lets go ahead and run the oc mirror command and see what happens.  Again I am using the --dry-run option to avoid actually mirroring the images into my local registry but still getting a preview of what would be mirrored if I did it without.
+With the imageset configuration file created lets go ahead and run the oc-mirror command and see what happens.  Again I am using the --dry-run option to avoid actually mirroring the images into my local registry but still getting a preview of what would be mirrored if I did it without.
 
 ~~~bash
 $ oc mirror --config=version-range-imageset-configuration.yaml docker://provisioning.schmaustech.com:5000 --dest-skip-tls --dry-run
@@ -787,7 +787,7 @@ mirror:
 EOF
 ~~~
 
-Now with the updated imageset we can run the oc mirror command again.  Can we catch watch changed in the output?
+Now with the updated imageset we can run the oc-mirror command again.  Can we catch watch changed in the output?
 
 ~~~bash
 $ oc mirror --config=imageset-configuration.yaml docker://provisioning.schmaustech.com:5000 --dest-skip-tls
@@ -852,4 +852,4 @@ spec:
 
 This is the `UpdateService` custom resource that the OSUS operator uses in order to create a local instance of the update graph server that connected clusters normally talk to via api.openshift.com. It is configuring to find the graph data in our local registry.  Its just another example of oc-mirror and its capabilities in action.  In an automation script that regularly executes of oc-mirror you can apply `updateService.yaml` and `imageContentSourcePolicy.yaml` conveniently to all your disconnected clusters so that they get the latest graph data and the latest offline access configuration, or push it into a central git repository to distribute it via Red Hat Advanced Cluster Management as a policy.
 
-Hopefully these example gave a good idea on how the oc mirror plugin works and how it simplifies the mirroring process for disconnected environments.  I personally found it a lot more user friendly then the old style of mirroring content specifically when it comes to dealing with operators.  
+Hopefully these example gave a good idea on how the oc-mirror plugin works and how it simplifies the mirroring process for disconnected environments.  I personally found it a lot more user friendly then the old style of mirroring content specifically when it comes to dealing with operators.  
